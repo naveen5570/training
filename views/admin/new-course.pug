@@ -31,26 +31,34 @@ include inc/header.pug
               div(class="col-md-4")
                label Price
                input(class="form-control" name="price" placeholder="price" type="text")
-              div(class="col-md-10" style="margin-top:20px;")
+              div(class="col-md-11" style="margin-top:20px;")
                label Category
                select(name="category_id" class="form-control")
                 option(value='' disabled) Choose Category
                 each category in categoryData 
                  <option value="#{category._id}">#{category.name}</option>
-              div(class="col-md-4" style="margin-top:20px;")
-                label Enter Schedule 1 date
-                input(type="date", name="schedule_date1", class="form-control" style="max-width:100%" required)
+             div(class="schedules row")
+               div(class="col-md-12") Enter Schedule Details Below
+               div(class="schedule_row row")
+                div(class="col-md-2" style="margin-top:20px;")
+                 label Starting Date
+                 input(type="date", name="start_date1", class="form-control" style="max-width:100%" required)
                 
-              div(class="col-md-5" style="margin-top:20px")
-                label Enter Schedule 1 time
-                input(type="time", name="schedule_time1", class="form-control" style="max-width:100%" required)
-              div(class="col-md-4" style="margin-top:20px;")
-                label Enter Schedule 2 date
-                input(type="date", name="schedule_date2", class="form-control" style="max-width:100%" required)
+                div(class="col-md-2" style="margin-top:20px")
+                 label Starting Time
+                 input(type="time", name="start_time1", class="form-control" style="max-width:100%" required)
+               
+                div(class="col-md-2" style="margin-top:20px;")
+                 label last Date
+                 input(type="date", name="end_date1", class="form-control" style="max-width:100%" required)
                 
-              div(class="col-md-5" style="margin-top:20px")
-                label Enter Schedule 2 time
-                input(type="time", name="schedule_time2", class="form-control" style="max-width:100%" required)
+                div(class="col-md-2" style="margin-top:20px")
+                 label End time
+                 input(type="time", name="end_time1", class="form-control" style="max-width:100%" required)
+                div(class="col-md-2" style="margin-top:20px")
+                 label &nbsp;
+                 span(class="add_schedule") + Add more
+             div(class="row" style="margin-bottom:20px;") 
               div(class="col-md-10" style="margin-top:20px;")
                label Description
                textarea(class="form-control" name="description" style="width:100%;" placeholder="Description")

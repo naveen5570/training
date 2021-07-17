@@ -39,7 +39,7 @@ app.use(bodyparser.json());
 app.set('views', path.join(__dirname, '/views/'));
 app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: 'mainLayout', layoutsDir: __dirname + '/views/layouts/' }));
 app.set('view engine', 'hbs');
-var server=app.listen(process.env.PORT || 8080,function()
+var server=app.listen(process.env.PORT || 3000,function()
 {
 })
 app.use('/views', express.static(__dirname + '/views'));
@@ -564,16 +564,20 @@ var courseModel = mongoose.model("Course");
 app.post('/admin/save-course',upload.single('img'), function(req, res, file){
     var i=1;
     var schedule_arr=[];
-    while(i<=2)
+    while(i<=50)
     {
         
-        var qq= 'schedule_date'+i;
-        var hh= 'schedule_time'+i;
+        var qq= 'start_date'+i;
+        var hh= 'start_time'+i;
+        var qq1= 'end_date'+i;
+        var hh1= 'end_time'+i;
         var qu = req.body[qq];
         var hi = req.body[hh];
+        var qu1 = req.body[qq1];
+        var hi1 = req.body[hh1];
         if(qu)
         {
-         var obj = {date:qu, time:hi}
+         var obj = {startdate:qu, starttime:hi, enddate:qu1, endtime:hi1}
          schedule_arr.push(obj);
         }
         i++;

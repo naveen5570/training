@@ -13,7 +13,8 @@ footer{padding-top:0;}
 a#logo { text-indent: 0; font-size:40px; padding-top: 10px;}
 .grid {text-align: center; border:1px solid #ddd; box-shadow: 4px 4px 10px 0 #999;}
 .grid img {width:100%; padding:15px; background: #333;}
-.schedules {background:#ddd; text-align: center; min-height: 200px; box-shadow: 4px 4px 10px 0 #999; padding:15px;}
+.schedules {background:#ddd; color:green;  text-align: left; min-height: 200px; box-shadow: 4px 4px 10px 0 #999; padding:15px;}
+.schedules h4 {font-size:14px; line-height: 30px;}
 .enroll_button{background:#000; color:#fff; border:0; padding:10px 15px;border-radius: 8px; box-shadow: 4px 4px 10px 0 #999; margin:0 auto; margin-bottom:20px ; font-size:20px; display:block; max-width: 180px; }
 a.enroll_button:hover{color:#000; background:#fff;}
 nav {background:#064876}

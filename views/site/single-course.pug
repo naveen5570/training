@@ -16,7 +16,7 @@ each course in courseData
   .container
     ol.breadcrumb
       li
-        a(href='/views/site/index.pug') Home
+        a(href='/') Home
       li.active= course.name
     .row
       .col-md-8
@@ -30,9 +30,9 @@ each course in courseData
            a(href="#")
             .schedules
              h4
-              | Date: #{schedule.date}
+              | Date: #{schedule.startdate} - #{schedule.enddate}
               br 
-              | Time:  #{schedule.time} 
+              | Time:  #{schedule.starttime} - #{schedule.endtime}
      
 
           

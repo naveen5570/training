@@ -2,3 +2,7 @@
 .has_dropdown{cursor:pointer;}
 .dropdown {display: none;}
 span.parent{pointer-events:none;}
+.schedules{padding:20px 0; background:#ddd}
+.schedule_row {width:100%; padding:0 15px;}
+.add_schedule, .remove_schedule {border:0; display: block; cursor:pointer; color:#fff; padding:12px 10px; font-size:14px; margin-bottom:0; background:green}
+.remove_schedule {background:red;}

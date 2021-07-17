@@ -8,8 +8,10 @@ var courseSchema = new mongoose.Schema({
         ref:'Category'
         },
     schedules:[{
-            date : String,
-            time : String
+            startdate : String,
+            enddate:String,
+            starttime : String,
+            endtime : String
              }],
     dateAdded:{  type:Date, default:Date.now()}
   
