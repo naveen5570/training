@@ -1,0 +1,69 @@
+include inc/header.pug          
+// Main content
+#panel.main-content
+ <div _ngcontent-lgx-c105="" class="col-12 text-right" style="margin-top:15px; padding-right:30px;"><a _ngcontent-lgx-c105="" href="/admin/logout" class="btn btn-sm btn-primary">Logout</a></div>
+  // Topnav
+  // Header
+  // Header
+  // Page content
+  .container-fluid.mt--6
+    .row(style="margin-top:100px;")
+      .col
+        .card
+          // Card header
+          .card-header.border-0
+            h3.mb-0 Courses
+          // Light table
+          .table-responsive
+            table(class="table align-items-center table-flush" id="example")
+              thead.thead-light
+                tr
+                  th.sort(scope='col' data-sort='name') S. No.
+                  th.sort(scope='col' data-sort='name') Name
+                  th.sort(scope='col' data-sort='image') Image
+                  
+                  th.sort(scope='col' data-sort='category id') Category id
+                  th.sort(scope='col' data-sort='description') Description
+                  th.sort(scope='col' data-sort='price') price
+                  th.sort(scope='col' data-sort='schedules') Schedules
+                  th.sort(scope='col' data-sort='actions') Actions
+                  
+              tbody.list
+               p(style="display:none;")- var i = 1;
+               each course in courseData
+                tr
+                  td
+                    .media.align-items-center
+                      .media-body
+                        span.name.mb-0.text-sm= i
+                  td
+                    .media.align-items-center
+                      .media-body
+                        span.name.mb-0.text-sm
+                         =course.name
+                  td
+                    .media.align-items-center
+                      .media-body
+                        span.name.mb-0.text-sm
+                         img(src='/views/uploads/'+course.img width="100" height="50") 
+                  td
+                    .media.align-items-center
+                      .media-body
+                        span.name.mb-0.text-sm
+                         =course.category_id.name
+                      
+                  td.budget
+                    span #{course.description.substr(0,30)}
+                  td.budget
+                    =course.price + " $"
+                  td.budget
+                    each schedule in course.schedules
+                     =schedule.date + ' '
+                     =schedule.time
+                     br
+                  
+                  td.text-right
+                    a.dropdown-item(href="/admin/edit-course/"+course._id) Edit
+                    a.dropdown-item(href="/admin/delete-course/"+course._id) Delete
+                span(style="display:none;")=i=i+1    
+include inc/footer.pug          

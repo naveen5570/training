@@ -1,0 +1,146 @@
+doctype html
+
+head
+  meta(http-equiv='content-type' content='text/html; charset=UTF-8')
+  meta(charset='utf-8')
+  title LEARN - Courses, Education site template
+  meta(name='viewport' content='width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no')
+  // Favicons
+  link(rel='shortcut icon' href='http://www.ansonika.com/learn/img/favicon.ico' type='image/x-icon')
+  link(rel='apple-touch-icon' type='image/x-icon' href='http://www.ansonika.com/learn/img/apple-touch-icon-57x57-precomposed.png')
+  link(rel='apple-touch-icon' type='image/x-icon' sizes='72x72' href='http://www.ansonika.com/learn/img/apple-touch-icon-72x72-precomposed.png')
+  link(rel='apple-touch-icon' type='image/x-icon' sizes='114x114' href='http://www.ansonika.com/learn/img/apple-touch-icon-114x114-precomposed.png')
+  link(rel='apple-touch-icon' type='image/x-icon' sizes='144x144' href='http://www.ansonika.com/learn/img/apple-touch-icon-144x144-precomposed.png')
+  // REVOLUTION BANNER CSS SETTINGS
+  link(href='/views/assets/learn/settings.css' media='screen' rel='stylesheet')
+  // CSS
+  link(href='/views/assets/learn/bootstrap.css' rel='stylesheet')
+  link(href='/views/assets/learn/superfish.css' rel='stylesheet')
+  link(href='/views/assets/learn/style.css' rel='stylesheet')
+  link(href='/views/assets/learn/fontello.css' rel='stylesheet')
+  //if lt IE 9
+    script(src='http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+    script(src='http://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js')
+  script(type='text/javascript' async='' src='/views/assets/learn/ga.js')
+  
+header
+  .container
+    .row
+      .col-md-3.col-sm-3.col-xs-3
+        a#logo(href='/' style="color:white") INSTROVATE
+      
+// End header
+nav
+  .container
+    .row
+      .col-md-12
+        #mobnav-btn
+        ul.sf-menu.sf-js-enabled.sf-arrows
+          li.normal_drop_down
+            a.sf-with-ul(href='/') Home
+            .mobnav-subarrow
+            ul(style='display: none;')
+              li
+                a(href='#') Revolution version
+              li
+                a(href='#') Subscription version
+              li
+                a(href='#') With Ajax Search bar
+              li
+                a(href='#') With Video
+          li.normal_drop_down
+            a.sf-with-ul(href='#') Vendors
+            .mobnav-subarrow
+            ul(style='display: none;')
+              li
+                a(href='#') Courses grid
+              li
+                a(href='#') Courses list
+              li
+                a(href='#') Course page Txt
+              li
+                a(href='#') Course page Video
+              li
+                a(href='#') Course details v1
+              li
+                a(href='#') Course details v2
+              li
+                a(href='#') Course details v3
+              li
+                a(href='#') Course details v4
+              li
+                a(href='#') Course details v5
+              li
+                a(href='#') Seminar timeline
+          //li
+            a(href='#') Prices &amp; Plans
+          
+          
+          li.mega_drop_down
+            a.sf-with-ul(href='#') Courses
+            .mobnav-subarrow
+            .sf-mega(style='display: none;')
+              .col-md-4.col-sm-6
+                h5 Communicate
+                ul.mega_submenu
+                  li
+                    a(href='#') About us
+                  li
+                    a(href='#') Teachers
+                  li
+                    a(href='#') Teacher profile
+                  li
+                    a(href='#') Member profile
+                  li
+                    a(href='#') Blog
+                  li
+                    a(href='#') News &amp; Events
+              .col-md-4.col-sm-6
+                h5 Other pages
+                ul.mega_submenu
+                  li
+                    a(href='#') PHP working wizard apply
+                  li
+                    a(href='#') PHP working apply
+                  li
+                    a(href='#') Login
+                  li
+                    a(href='#') Register
+                  li
+                    a(href='#') Shortcodes
+                  li
+                    a(href='#')
+                      | Photo &amp; video gallery 
+                      img(src='/view/uploads/learn/new.png' alt='')
+              .col-md-4.col-sm-6
+                h5 Submenu with icons
+                ul.mega_submenu.icons
+                  li
+                    a(href='#')
+                      | Downloads
+                      i.icon-download
+                  li
+                    a(href='#')
+                      | Video files 
+                      i.icon-video
+                  li
+                    a(href='#')
+                      | Audio files 
+                      i.icon-mic
+                  li
+                    a(href='#')
+                      | Members 
+                      i.icon-user
+          li
+            a(href='#') About us
+          li
+            a(href='#') Contact us
+        .col-md-3.pull-right.hidden-sm.hidden-xs
+          //#sb-search.sb-search
+            form
+              input#search.sb-search-input(placeholder='Enter your search term...' type='text' name='search')
+              input.sb-search-submit(type='submit' value='')
+              span.sb-icon-search
+        // End search
+    // End row
+  // End container

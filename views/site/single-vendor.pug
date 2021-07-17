@@ -1,0 +1,86 @@
+include inc/header
+each vendor in vendorData
+ section#sub-header
+  .container
+    .row
+      .col-md-12.text-center
+       
+        h1= vendor.name
+        //p.lead= vendor.description
+          
+    // End row
+    
+  // End container
+  .divider_top
+ section#main_content
+  .container
+    ol.breadcrumb
+      li
+        a(href='/views/site/index.pug') Home
+      li.active= vendor.name
+    .row
+      .col-md-12
+        h2= vendor.name
+        p= vendor.description
+        .col-md-12.text-center
+          h2 Categories
+          p.lead Lorem ipsum dolor sit amet, ius minim gubergren ad.
+    .row 
+      each category in categoryData
+        .col-md-3
+         .grid
+           <a href="/category/#{category._id}"><img src="/views/uploads/#{category.img}"/></a>
+             .info
+              .row
+               .course_info.col-md-12.col-sm-12
+                h4 #{category.name.substr(0,20)}
+                p #{category.description.substr(0,130)}
+                
+                
+              .separator.clearfix
+              
+                p.btn-details
+                 a(href= '/category/'+category._id)
+                  i.icon-list
+                  |  Read More 
+
+          
+      //aside.col-md-4
+        .box_style_1
+          h4
+            a(href='#')
+              | Download files 
+              i.icon-download.pull-right
+          br
+          h4 Speakers
+          .media
+            .pull-right
+              img.img-circle(src='single_page_files/avatar1.jpg' alt='')
+            .media-body
+              h5.media-heading
+                a(href='#') Marc Twain
+              p
+                | Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in.
+          .media
+            .pull-right
+              img.img-circle(src='single_page_files/avatar1.jpg' alt='')
+            .media-body
+              h5.media-heading
+                a(href='#') Marc Twain
+              p
+                | Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in.
+        .box_style_1
+          h4 Related content
+          ul.list_1
+            li
+              a(href='#') Ceteros mediocritatem
+            li
+              a(href='#') Labore nostrum
+            li
+              a(href='#') Primis bonorum
+            li
+              a(href='#') Ceteros mediocritatem
+      // End col-md-4
+    // End row
+  // End container
+include inc/footer

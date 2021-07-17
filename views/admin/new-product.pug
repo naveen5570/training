@@ -1,0 +1,44 @@
+include inc/header.pug        
+// Main content
+#panel.main-content
+ 
+  // Topnav
+  // Header
+  // Header
+  // Page content
+  .container-fluid.mt--6
+    
+    .row
+      .col
+        .card
+          // Card header
+          .card-header.border-0(style="margin-top:100px;")
+            <div _ngcontent-lgx-c105="" class="col-12 text-right" style="margin-top:15px; padding-right:30px;"><a _ngcontent-lgx-c105="" href="/admin/logout" class="btn btn-sm btn-primary">Logout</a></div>
+            h3.mb-0 Add Product information
+            
+          .card-body
+           
+            form(method='POST' action='/admin/save-product' enctype="multipart/form-data")
+             
+             div(class="row" style="margin-bottom:20px;")
+              div(class="col-md-6")
+               label Product Name
+               input(class="form-control" name="name" placeholder="Full Name" type="text")
+
+              div(class="col-md-6")
+               label Product Image
+               input(class="form-control" name="img" placeholder="image" type="file")
+              
+              div(class="col-md-10" style="margin-top:20px;")
+               label Vendor
+               select(name="v_id" class="form-control")
+                option(value='' disabled) Choose Vendor
+                each vendor in vendorData 
+                 <option value="#{vendor._id}">#{vendor.name}</option>
+              div(class="col-md-10" style="margin-top:20px;")
+               label Description
+               textarea(class="form-control" name="description" style="width:100%;" placeholder="Description")
+             
+              
+               input(type="submit" name="submit" value="Submit" class="btn btn-custom right" style="background:blue; color:#fff; margin-top:15px;")
+include inc/footer.pug

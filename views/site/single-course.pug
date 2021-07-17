@@ -1,0 +1,53 @@
+include inc/header
+each course in courseData
+ section#sub-header
+  .container
+    .row
+      .col-md-12.text-center
+       
+        h1= course.name
+        //p.lead= vendor.description
+          
+    // End row
+    
+  // End container
+  .divider_top
+ section#main_content
+  .container
+    ol.breadcrumb
+      li
+        a(href='/views/site/index.pug') Home
+      li.active= course.name
+    .row
+      .col-md-8
+        h2= course.name
+        p= course.description
+        h3(style="padding-bottom:20px;") Schedules
+        
+        .row#schedules
+         each schedule in course.schedules
+          .col-md-4
+           a(href="#")
+            .schedules
+             h4
+              | Date: #{schedule.date}
+              br 
+              | Time:  #{schedule.time} 
+     
+
+          
+      aside.col-md-4
+        .box_style_1(style="text-align:center;")
+          
+          h4(style="text-align:center; border:0")= 'Price: $'+ course.price
+          a(class="enroll_button" href="#schedules") Enroll Now
+              
+              
+        
+          
+          
+        
+      // End col-md-4
+    // End row
+  // End container
+include inc/footer

@@ -1,0 +1,112 @@
+footer
+  //.container
+    .row
+      .col-md-8.col-md-offset-2
+        h3 Subscribe to our Newsletter for latest news.
+        #message-newsletter
+        form#newsletter.form-inline(method='post' action='assets/newsletter.php' name='newsletter')
+          input#email_newsletter.form-control(name='email_newsletter' type='email' placeholder='Your Email')
+          button#submit-newsletter.button_outline  Subscribe
+  hr
+  #nav-footer.container
+    .row.text-left
+      .col-md-3.col-sm-3
+        h4 Browse
+        ul
+          li
+            a(href='/') Home
+          li
+            a(href='#') Vendors
+          li
+            a(href='#') Courses
+          li
+            a(href='#') About us
+          li
+            a(href='#') Contact us
+      // End col-md-4
+      .col-md-3.col-sm-3
+        h4 Next Courses
+        ul
+          li
+            a(href='/') Home
+          li
+            a(href='#') Vendors
+          li
+            a(href='#') Courses
+          li
+            a(href='#') About us
+          li
+            a(href='#') Contact us
+      // End col-md-4
+      .col-md-3.col-sm-3
+        h4 About Learn
+        ul
+          li
+            a(href='/') Home
+          li
+            a(href='#') Vendors
+          li
+            a(href='#') Courses
+          li
+            a(href='#') About us
+          li
+            a(href='#') Contact us
+      // End col-md-4
+      .col-md-3.col-sm-3
+        ul#follow_us
+          li
+            a(href='#')
+              i.icon-facebook
+          li
+            a(href='#')
+              i.icon-twitter
+          li
+            a(href='#')
+              i.icon-google
+        ul
+          li
+            strong.phone +004 0000 00
+            br
+            small Mon - Fri / 9.00AM - 06.00PM
+          li
+            | Questions? 
+            a(href='#') abc@instrovate.com
+      // End col-md-4
+    // End row
+  #copy_right &copy; All rights reserved 2021
+#toTop Back to top
+// JQUERY
+script(src='/views/assets/learn/jquery-2.js')
+// jQuery REVOLUTION Slider
+script(type='text/javascript' src='/views/assets/learn/jquery.js')
+script(type='text/javascript' src='/views/assets/learn/jquery_003.js')
+script(type='text/javascript').
+  var revapi;
+  jQuery(document).ready(function() {
+  revapi = jQuery('.tp-banner').revolution(
+  {
+  delay:9000,
+  startwidth:1700,
+  startheight:600,
+  hideThumbs:true,
+  navigationType:"none",
+  fullWidth:"on",
+  forceFullWidth:"on"
+  });
+  });	//ready
+// OTHER JS
+script(src='learn/superfish.js')
+script(src='/views/assets/learn/bootstrap.js')
+script(src='/views/assets/learn/retina.js')
+script(src='/views/assets/learn/validate.js')
+script(src='/views/assets/learn/jquery_002.js')
+script(src='/views/assets/learn/functions.js')
+script(src='/views/assets/learn/classie.js')
+script(src='/views/assets/learn/uisearch.js')
+script.
+  new UISearch( document.getElementById( 'sb-search' ) );
+// STYLE SWITCHER
+link(rel='stylesheet' type='text/css' media='screen,projection' href='/views/assets/learn/jquery-sticklr-1.css')
+script(type='text/javascript' src='/views/assets/learn/jquery-sticklr-1.js')
+script(type='text/javascript').
+  

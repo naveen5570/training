@@ -1,0 +1,513 @@
+include inc/header
+.forcefullwidth_wrapper_tp_banner(style='position:relative;width:100%;height:auto;margin-top:0px;margin-bottom:0px')
+  section.tp-banner-container(style='left: 0px; position: absolute; width: 1519px; overflow: visible;')
+    #revslider-615.tp-banner.revslider-initialised.tp-simpleresponsive(style='max-height: 600px; background-color: rgba(0, 0, 0, 0); background-image: none; height: 536px;')
+      ul.sliderwrapper(style='display: block; overflow: hidden; width: 100%; height: 100%; max-height: none;')
+        
+        
+        // SLIDE
+        li(data-transition='zoomin' data-slotamount='4' data-masterspeed='1000' style='width: 100%; height: 100%; overflow: hidden; visibility: visible; left: 0px; top: 0px; z-index: 20; opacity: 1; position: absolute;')
+          // MAIN IMAGE
+          .slotholder(style='width:100%;height:100%;' data-duration='undefined' data-zoomstart='undefined' data-zoomend='undefined' data-rotationstart='undefined' data-rotationend='undefined' data-ease='undefined' data-bgpositionend='undefined' data-bgposition='left top' data-kenburns='undefined' data-easeme='undefined' data-bgfit='cover' data-bgfitend='undefined' data-owidth='undefined' data-oheight='undefined')
+            .tp-bgimg.defaultimg(data-lazyload='undefined' data-bgfit='cover' data-bgposition='left top' data-bgrepeat='no-repeat' data-lazydone='undefined' src='/views/uploads/learn/slide_5.jpg' data-src='/views/uploads/learn/slide_5.jpg' style='background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url("/views/uploads/learn/slide_5.jpg"); background-size: cover; background-position: left top; width: 100%; height: 100%; opacity: 1;')
+          // LAYERS
+          // LAYER NR. 10
+          //.tp-caption.large_bold_white.customin.customout.start(data-x='center' data-hoffset='0' data-y='160' data-customin='x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;' data-customout='x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;' data-speed='1000' data-start='1700' data-easing='Back.easeInOut' data-endspeed='300' style='z-index: 11; min-height: 0px; min-width: 0px; line-height: 54px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-size: 52px; left: 426.5px; top: 142.933px; visibility: visible; opacity: 1; transform: translate3d(0px, 0px, 0px); transform-origin: 50% 0% 0px;')
+            | Single or multi course
+          // LAYER NR. 11
+          .tp-caption.customin.customout.start(data-x='center' data-hoffset='0' data-y='160' data-customin='x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;' data-customout='x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;' data-speed='1000' data-start='1700' data-easing='Back.easeInOut' data-endspeed='300' style='z-index: 11; min-height: 0px; min-width: 0px; line-height: 34px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-size: 32px; left: 50%; top: 50%; visibility: visible; opacity: 1; transform: translate(-50%, -50%); max-width:600px; width:100%')
+            h4(style="font-size:52px; margin-bottom:30px; color:#fff; font-weight:bold; text-align:center;") Be a Learner
+            input(type="text" class="search" name='search' placeholder="Search..." )
+            button( class="search_submit" name='search' placeholder="Search...")
+             span.sb-icon-search
+            
+      .tp-bannertimer(style='width: 29.1778%; visibility: visible;')
+      .tp-loader.spinner0(style='visibility: hidden; opacity: 0;')
+        .dot1
+        .dot2
+        .bounce1
+        .bounce2
+        .bounce3
+    .tp-leftarrow.tparrows.default.hidearrows(style='position: absolute; top: 268px; margin-top: -20px; left: 20px;')
+    .tp-rightarrow.tparrows.default.hidearrows(style='position: absolute; top: 268px; margin-top: -20px; right: 20px;')
+// End slider
+
+section(class="vendors")
+ .container
+  .row
+   .col-md-12.text-center 
+    h2 Vendors
+    p(class="lead") Lorem ipsum dolor sit amet, ius minim gubergren ad.
+  .row
+   each vendor in vendorData
+    .col-md-4
+     <a href="/vendor/#{vendor._id}"><img src="/views/uploads/#{vendor.img}" width="100%"></a>
+   
+    
+
+//section#main-features
+  .divider_top_black
+  .container
+    .row
+      .col-md-10.col-md-offset-1.text-center
+        h2 Why Join Learn
+        p.lead
+          | Lorem ipsum dolor sit amet, ius minim gubergren ad. 
+          br
+          |                     At mei sumo sonet audiam, ad mutat elitr platonem vix. Ne nisl idque fierent vix. Ferri clitaponderum ne.
+    .row
+      .col-md-6
+        .feature
+          i.icon-trophy
+          h3 Expert teachers
+          p
+            | Lorem ipsum dolor sit amet, vix erat audiam ei.
+            | Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset,
+            | doctus volumus explicari qui ex, appareat similique an usu.
+      .col-md-6
+        .feature
+          i.icon-ok-4
+          h3 Trusted certifications
+          p
+            | Lorem ipsum dolor sit amet, vix erat audiam ei.
+            | Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset,
+            | doctus volumus explicari qui ex, appareat similique an usu.
+      .col-md-6
+        .feature
+          i.icon-mic
+          h3 +500 Audio lessons
+          p
+            | Lorem ipsum dolor sit amet, vix erat audiam ei.
+            | Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset,
+            | doctus volumus explicari qui ex, appareat similique an usu.
+      .col-md-6
+        .feature
+          i.icon-video
+          h3 +1.200 Video lessons
+          p
+            | Lorem ipsum dolor sit amet, vix erat audiam ei.
+            | Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset,
+            | doctus volumus explicari qui ex, appareat similique an usu.
+    // End row
+  // End container
+// End main-features
+section#main_content_gray
+  .container
+    .row
+      .col-md-12.text-center
+        h2 Latest Courses
+        p.lead Lorem ipsum dolor sit amet, ius minim gubergren ad.
+    // End row
+    .row
+      each course in courseData
+       .col-lg-3.col-md-6.col-sm-6
+        .col-item
+          span.ribbon_course
+          .photo
+            <a href="/course/#{course._id}"><img src="/views/uploads/#{course.img}"/></a>
+              
+            .cat_row
+              a(href='#')= course.category_id.name
+              
+          .info
+            .row
+              .course_info.col-md-12.col-sm-12
+                h4 #{course.name.substr(0,20)}
+                p #{course.description.substr(0,130)}
+                
+                .price.pull-right= course.price + "$"
+            .separator.clearfix
+              
+              p.btn-details
+                a(href= 'course/'+course._id)
+                  i.icon-list
+                  |  Read More
+      
+    // End row
+    .row
+      .col-md-12(style="text-align:center;")
+        a.button_medium_outline(href='#') View all courses
+  // End container
+// End section gray
+// section#main_content
+  .container
+    .row.add_bottom_30
+      .col-md-12.text-center
+        h2 NextCourses
+        p.lead Lorem ipsum dolor sit amet, ius minim gubergren ad.
+    .row
+      .col-md-6
+        .media
+          .circ-wrapper.pull-left
+            h3
+              | 25
+              br
+              | June
+          .media-body
+            h4.media-heading
+              a(href='javascript:void(0)') CSS3 Editable Flat effect
+              span.label.label-warning NEW
+            p
+              | Lorem ipsum dolor sit amet, vix erat audiam
+              | ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet
+              | deterruisset, doctus volumus explicari qui ex.
+            ul.data-lessons
+              li.po-markup
+                a.po-link(href='javascript:void(0)' data-original-title='' title='')
+                  i.icon-clock
+                  | Duration: 6 hours
+                .po-content.hidden
+                  .po-title
+                    strong Duration: 6 hours
+                  // ./po-title
+                  .po-body
+                    p.no_margin
+                      | Lorem
+                      | ipsum dolor sit amet, has at illum dictas definitiones, ei primis
+                      | indoctum torquatos nec. Vis te velit probatus, natum atomorum tincidunt
+                      | nec an.
+                  // ./po-body
+                // ./po-content
+              li.po-markup
+                a.po-link(href='javascript:void(0)' data-original-title='' title='')
+                  i.icon-video
+                  | Video files
+                .po-content.hidden
+                  .po-title
+                    strong Video files
+                  // ./po-title
+                  .po-body
+                    ul.list_po_body
+                      li
+                        i.icon-ok
+                        |  2 Video lessons
+                      li
+                        i.icon-ok
+                        | 1 Video for practice
+                      li
+                        i.icon-ok
+                        | 1 Video Quiz
+                  // ./po-body
+                // ./po-content
+              li.po-markup
+                a.po-link(href='javascript:void(0)' data-original-title='' title='')
+                  i.icon-mic
+                  | Audio files
+                .po-content.hidden
+                  .po-title
+                    strong Audio files
+                  // ./po-title
+                  .po-body
+                    p.no_margin
+                      | Lorem
+                      | ipsum dolor sit amet, has at illum dictas definitiones, ei primis
+                      | indoctum torquatos nec. Vis te velit probatus, natum atomorum tincidunt
+                      | nec an.
+                  // ./po-body
+                // ./po-content
+        .media
+          .circ-wrapper.pull-left
+            h3
+              | 15
+              br
+              | July
+          .media-body
+            h4.media-heading
+              a(href='javascript:void(0)') CSS3 Workshop
+              span.label.label-warning NEW
+            p
+              | Lorem ipsum dolor sit amet, vix erat audiam
+              | ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet
+              | deterruisset, doctus volumus explicari qui ex.
+            ul.data-lessons
+              li.po-markup
+                a.po-link(href='javascript:void(0)' data-original-title='' title='')
+                  i.icon-clock
+                  | Duration: 6 hours
+                .po-content.hidden
+                  .po-title
+                    strong Duration: 6 hours
+                  // ./po-title
+                  .po-body
+                    p.no_margin
+                      | Lorem
+                      | ipsum dolor sit amet, has at illum dictas definitiones, ei primis
+                      | indoctum torquatos nec. Vis te velit probatus, natum atomorum tincidunt
+                      | nec an.
+                  // ./po-body
+                // ./po-content
+              li.po-markup
+                a.po-link(href='javascript:void(0)' data-original-title='' title='')
+                  i.icon-video
+                  | Video files
+                .po-content.hidden
+                  .po-title
+                    strong Video files
+                  // ./po-title
+                  .po-body
+                    ul.list_po_body
+                      li
+                        i.icon-ok
+                        |  2 Video lessons
+                      li
+                        i.icon-ok
+                        | 1 Video for practice
+                      li
+                        i.icon-ok
+                        | 1 Video Quiz
+                  // ./po-body
+                // ./po-content
+              li.po-markup
+                a.po-link(href='javascript:void(0)' data-original-title='' title='')
+                  i.icon-doc-text-inv
+                  | Text doc
+                .po-content.hidden
+                  .po-title
+                    strong Text doc
+                  // ./po-title
+                  .po-body
+                    p.no_margin
+                      | Lorem
+                      | ipsum dolor sit amet, has at illum dictas definitiones, ei primis
+                      | indoctum torquatos nec. Vis te velit probatus, natum atomorum tincidunt
+                      | nec an.
+                  // ./po-body
+                // ./po-content
+      // End col md 6
+      .col-md-6
+        .media
+          .circ-wrapper.pull-left
+            h3
+              | 12
+              br
+              | Aug
+          .media-body
+            h4.media-heading
+              a(href='javascript:void(0)') CSS3 Editable Flat effect
+            p
+              | Lorem ipsum dolor sit amet, vix erat audiam
+              | ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet
+              | deterruisset, doctus volumus explicari qui ex.
+            ul.data-lessons
+              li.po-markup
+                a.po-link(href='javascript:void(0)' data-original-title='' title='')
+                  i.icon-clock
+                  | Duration: 6 hours
+                .po-content.hidden
+                  .po-title
+                    strong Duration: 6 hours
+                  // ./po-title
+                  .po-body
+                    p.no_margin
+                      | Lorem
+                      | ipsum dolor sit amet, has at illum dictas definitiones, ei primis
+                      | indoctum torquatos nec. Vis te velit probatus, natum atomorum tincidunt
+                      | nec an.
+                  // ./po-body
+                // ./po-content
+              li.po-markup
+                a.po-link(href='javascript:void(0)' data-original-title='' title='')
+                  i.icon-video
+                  | Video files
+                .po-content.hidden
+                  .po-title
+                    strong Video files
+                  // ./po-title
+                  .po-body
+                    ul.list_po_body
+                      li
+                        i.icon-ok
+                        |  2 Video lessons
+                      li
+                        i.icon-ok
+                        | 1 Video for practice
+                      li
+                        i.icon-ok
+                        | 1 Video Quiz
+                  // ./po-body
+                // ./po-content
+              li.po-markup
+                a.po-link(href='javascript:void(0)' data-original-title='' title='')
+                  i.icon-mic
+                  | Audio files
+                .po-content.hidden
+                  .po-title
+                    strong Audio files
+                  // ./po-title
+                  .po-body
+                    p.no_margin
+                      | Lorem
+                      | ipsum dolor sit amet, has at illum dictas definitiones, ei primis
+                      | indoctum torquatos nec. Vis te velit probatus, natum atomorum tincidunt
+                      | nec an.
+                  // ./po-body
+                // ./po-content
+        .media
+          .circ-wrapper.pull-left
+            h3
+              | 25
+              br
+              | Sept
+          .media-body
+            h4.media-heading
+              a(href='javascript:void(0)') CSS3 Workshop
+            p
+              | Lorem ipsum dolor sit amet, vix erat audiam
+              | ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet
+              | deterruisset, doctus volumus explicari qui ex.
+            ul.data-lessons
+              li.po-markup
+                a.po-link(href='javascript:void(0)' data-original-title='' title='')
+                  i.icon-clock
+                  | Duration: 6 hours
+                .po-content.hidden
+                  .po-title
+                    strong Duration: 6 hours
+                  // ./po-title
+                  .po-body
+                    p.no_margin
+                      | Lorem
+                      | ipsum dolor sit amet, has at illum dictas definitiones, ei primis
+                      | indoctum torquatos nec. Vis te velit probatus, natum atomorum tincidunt
+                      | nec an.
+                  // ./po-body
+                // ./po-content
+              li.po-markup
+                a.po-link(href='javascript:void(0)' data-original-title='' title='')
+                  i.icon-video
+                  | Video files
+                .po-content.hidden
+                  .po-title
+                    strong Video files
+                  // ./po-title
+                  .po-body
+                    ul.list_po_body
+                      li
+                        i.icon-ok
+                        |  2 Video lessons
+                      li
+                        i.icon-ok
+                        | 1 Video for practice
+                      li
+                        i.icon-ok
+                        | 1 Video Quiz
+                  // ./po-body
+                // ./po-content
+              li.po-markup
+                a.po-link(href='javascript:void(0)' data-original-title='' title='')
+                  i.icon-doc-text-inv
+                  | Text doc
+                .po-content.hidden
+                  .po-title
+                    strong Text doc
+                  // ./po-title
+                  .po-body
+                    p.no_margin
+                      | Lorem
+                      | ipsum dolor sit amet, has at illum dictas definitiones, ei primis
+                      | indoctum torquatos nec. Vis te velit probatus, natum atomorum tincidunt
+                      | nec an.
+                  // ./po-body
+                // ./po-content
+    // End row
+    hr
+    .row
+      .col-md-3.col-sm-6
+        h4 Our team
+        p
+          img.img-responsive(src='/views/uploads/learn/pic_1.jpg' alt='Pic')
+        p
+          | Lorem ipsum dolor sit amet, vix erat audiam ei. Cum
+          | doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset,
+          | doctus volumus explicari qui ex.
+      .col-md-3.col-sm-6
+        h4 Equiped classrooms
+        p
+          img.img-responsive(src='/views/uploads/learn/pic_2.jpg' alt='Pic')
+        p
+          | Lorem ipsum dolor sit amet, vix erat audiam ei. Cum
+          | doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset,
+          | doctus volumus explicari qui ex.
+      .col-md-3.col-sm-6
+        h4 Enjoy classroom mates
+        p
+          img.img-responsive(src='/views/uploads/learn/pic_3.jpg' alt='Pic')
+        p
+          | Lorem ipsum dolor sit amet, vix erat audiam ei. Cum
+          | doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset,
+          | doctus volumus explicari qui ex.
+      .col-md-3.col-sm-6
+        h4 Links
+        ul.list_1
+          li
+            a(href='#') Ceteros mediocritatem
+          li
+            a(href='#') Labore nostrum
+          li
+            a(href='#') Primis bonorum
+          li
+            a(href='#') Ceteros mediocritatem
+          li
+            a(href='#') Labore nostrum
+          li
+            a(href='#') Primis bonorum
+    // End row
+    hr.add_bottom_30
+    .row
+      .col-md-12
+        p
+          img.img-responsive(src='/views/uploads/learn/sponsors.jpg' alt='Pic')
+  // End container
+// End main_content
+//section#testimonials
+  .container
+    .row
+      .col-md-offset-2.col-md-8.text-center
+        h2 What they say
+    .row
+      .col-md-offset-2.col-md-8
+        #quote-carousel.carousel.slide(data-ride='carousel')
+          // Bottom Carousel Indicators
+          ol.carousel-indicators
+            li.active(data-target='#quote-carousel' data-slide-to='0')
+            li(data-target='#quote-carousel' data-slide-to='1')
+            li(data-target='#quote-carousel' data-slide-to='2')
+          // Carousel Slides / Quotes
+          .carousel-inner
+            // Quote 1
+            .item.active
+              blockquote
+                .row
+                  .col-sm-3.text-center
+                    img.img-circle(src='/views/uploads/learn/testimonial_1.jpg' alt='')
+                  .col-sm-9
+                    p
+                      | Neque porro quisquam est
+                      | qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!
+                    small Someone famous
+            // Quote 2
+            .item
+              blockquote
+                .row
+                  .col-sm-3.text-center
+                    img.img-circle(src='/views/uploads/learn/testimonial_2.jpg' alt='')
+                  .col-sm-9
+                    p
+                      | Lorem ipsum dolor sit
+                      | amet, consectetur adipiscing elit. Etiam auctor nec lacus ut tempor.
+                      | Mauris.
+                    small Someone famous
+            // Quote 3
+            .item
+              blockquote
+                .row
+                  .col-sm-3.text-center
+                    img.img-circle(src='/views/uploads/learn/testimonial_1.jpg' alt='')
+                  .col-sm-9
+                    p
+                      | Lorem ipsum dolor sit
+                      | amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget
+                      | pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.
+                    small Someone famous
+// End testimonials
+include inc/footer

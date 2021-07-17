@@ -1,0 +1,33 @@
+include inc/header.pug        
+// Main content
+#panel.main-content
+ 
+  // Topnav
+  // Header
+  // Header
+  // Page content
+  .container-fluid.mt--6
+    
+    .row
+      .col
+        .card
+          // Card header
+          .card-header.border-0(style="margin-top:100px;")
+            <div _ngcontent-lgx-c105="" class="col-12 text-right" style="margin-top:15px; padding-right:30px;"><a _ngcontent-lgx-c105="" href="/admin/logout" class="btn btn-sm btn-primary">Logout</a></div>
+            h3.mb-0 Edit Vendor
+            
+          .card-body
+           each vendor in vendorData
+            form(method='POST' action='/admin/updateVendor')
+             //h6(class="heading-small text-muted mb-4") User information
+             div(class="row" style="margin-bottom:20px;")
+              div(class="col-md-8")
+               <label>Name</label>
+               <input class="form-control" name="name" placeholder="Name" type="text" value="#{vendor.name}">
+              div(class="col-md-12" style="margin-top:20px;")
+               label Description
+               textarea(class="form-control" name="description" placeholder="Name") #{vendor.description}
+             
+               <input type="hidden" name="id" value="#{id}">
+               input(type="submit" name="submit" value="Update" class="btn btn-custom right" style="background:blue; color:#fff; margin-top:15px;")
+include inc/footer.pug

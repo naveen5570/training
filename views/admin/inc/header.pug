@@ -1,0 +1,77 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  meta(name='description' content='Start your development with a Dashboard for Bootstrap 4.')
+  meta(name='author' content='Creative Tim')
+  title GBP
+  // Favicon
+  link(rel='icon' href='/views/assets/img/brand/favicon.png' type='image/png')
+  // Fonts
+  link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700')
+  // Icons
+  link(rel='stylesheet' href='/views/assets/vendor/nucleo/css/nucleo.css' type='text/css')
+  link(rel='stylesheet' href='/views/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css' type='text/css')
+  // Argon CSS
+  link(rel='stylesheet' href='/views/assets/css/argon.css?v=1.2.0' type='text/css')
+  link(rel='stylesheet' href='/views/assets/css/style.css' type='text/css')
+  link(rel='stylesheet' href='https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css' type='text/css')
+  link(rel='stylesheet' href='https://cdn.datatables.net/searchpanes/1.2.1/css/searchPanes.dataTables.min.css' type='text/css')
+  link(rel='stylesheet' href='https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css' type='text/css')
+  
+// Sidenav
+nav#sidenav-main.sidenav.navbar.navbar-vertical.fixed-left.navbar-expand-xs.navbar-light.bg-white
+  .scrollbar-inner
+    // Brand
+    .sidenav-header.align-items-center
+      a.navbar-brand(href='javascript:void(0)')
+        img.navbar-brand-img(src='/views/assets/img/brand/blue.png' alt='...')
+    .navbar-inner
+      // Collapse
+      #sidenav-collapse-main.collapse.navbar-collapse
+        // Nav items
+        ul.navbar-nav
+          li.nav-item.has_dropdown
+            
+            span.nav-link.parent
+              i.ni.ni-tv-2.text-primary
+              span.nav-link-text Vendors
+            ul(class="dropdown")
+             li.nav-item
+              a.nav-link(href='/admin/vendors')
+               i.ni.ni-tv-2.text-primary
+               span.nav-link-text all vendors 
+             li.nav-item
+              a.nav-link(href='/admin/new-vendor')
+               i.ni.ni-tv-2.text-primary
+               span.nav-link-text add vendor
+            
+          
+          li.nav-item.has_dropdown
+            span.nav-link.parent
+              i.ni.ni-tv-2.text-primary
+              span.nav-link-text Categories
+            ul(class="dropdown")
+             li.nav-item
+              a.nav-link(href='/admin/categories')
+               i.ni.ni-tv-2.text-primary
+               span.nav-link-text all categories 
+             li.nav-item
+              a.nav-link(href='/admin/new-category')
+               i.ni.ni-tv-2.text-primary
+               span.nav-link-text add category
+           
+          li.nav-item.has_dropdown
+            span.nav-link.parent
+              i.ni.ni-tv-2.text-primary
+              span.nav-link-text Courses 
+            ul(class="dropdown")
+             li.nav-item
+              a.nav-link(href='/admin/courses')
+               i.ni.ni-tv-2.text-primary
+               span.nav-link-text all courses 
+             li.nav-item
+              a.nav-link(href='/admin/new-course')
+               i.ni.ni-tv-2.text-primary
+               span.nav-link-text add course
+  

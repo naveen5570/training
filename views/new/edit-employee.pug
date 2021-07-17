@@ -1,0 +1,115 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  meta(name='description' content='Start your development with a Dashboard for Bootstrap 4.')
+  meta(name='author' content='Creative Tim')
+  title Argon Dashboard - Free Dashboard for Bootstrap 4
+  // Favicon
+  link(rel='icon' href='/views/assets/img/brand/favicon.png' type='image/png')
+  // Fonts
+  link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700')
+  // Icons
+  link(rel='stylesheet' href='/views/assets/vendor/nucleo/css/nucleo.css' type='text/css')
+  link(rel='stylesheet' href='/views/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css' type='text/css')
+  // Argon CSS
+  link(rel='stylesheet' href='/views/assets/css/argon.css?v=1.2.0' type='text/css')
+// Sidenav
+nav#sidenav-main.sidenav.navbar.navbar-vertical.fixed-left.navbar-expand-xs.navbar-light.bg-white
+  .scrollbar-inner
+    // Brand
+    .sidenav-header.align-items-center
+      a.navbar-brand(href='javascript:void(0)')
+        img.navbar-brand-img(src='/views/assets/img/brand/blue.png' alt='...')
+    .navbar-inner
+      // Collapse
+      #sidenav-collapse-main.collapse.navbar-collapse
+        // Nav items
+        ul.navbar-nav
+          li.nav-item
+            a.nav-link(href='/admin/employees')
+              i.ni.ni-tv-2.text-primary
+              span.nav-link-text Leads
+          li.nav-item
+            a.nav-link(href='/admin/admin-list')
+              i.ni.ni-tv-2.text-primary
+              span.nav-link-text admins
+          li.nav-item
+            a.nav-link(href='/admin/new-admin')
+              i.ni.ni-tv-2.text-primary
+              span.nav-link-text add new admin
+        
+// Main content
+#panel.main-content
+ 
+  // Topnav
+  // Header
+  // Header
+  // Page content
+  .container-fluid.mt--6
+    
+    .row
+      .col
+        .card
+          // Card header
+          .card-header.border-0(style="margin-top:100px;")
+            <div _ngcontent-lgx-c105="" class="col-12 text-right" style="margin-top:15px; padding-right:30px;"><a _ngcontent-lgx-c105="" href="/admin/logout" class="btn btn-sm btn-primary">Logout</a></div>
+            h3.mb-0 Edit Lead
+            
+          .card-body
+           each employee in employeeData
+            form(method='POST' action='/admin/updateEmployee')
+             h6(class="heading-small text-muted mb-4") User information
+             div(class="row" style="margin-bottom:20px;")
+              div(class="col-md-6")
+               <label>First Name</label>
+               <input class="form-control" name="firstName" placeholder="Name" type="text" value="#{employee.firstName}">
+              div(class="col-md-6")
+               <label>Last Name</label>
+               <input class="form-control" name="Surname" placeholder="Name" type="text" value="#{employee.Surname}">
+             div(class="row" style="margin-bottom:20px;")
+              div(class="col-md-6")
+               <label>Email</label>
+               <input class="form-control" name="email" placeholder="Name" type="text" value="#{employee.email}">
+              div(class="col-md-6")
+               <label>Gender</label>
+               <input class="form-control" name="gender" placeholder="Name" type="text" value="#{employee.gender}">
+             h6(class="heading-small text-muted mb-4") Contact information
+             div(class="row" style="margin-bottom:20px;")
+              div(class="col-md-12" style="margin-bottom:20px;")
+               <label>Profession or Academic Pursuit</label>
+               <input class="form-control" name="profession" placeholder="Name" type="text" value="#{employee.profession}">
+              div(class="col-md-4")
+               <label>Date of Birth</label>
+               <input class="form-control" name="age" placeholder="Name" type="date" value="#{employee.age}">
+              div(class="col-md-4")
+               <label>Father's State of Origin</label>
+               <input class="form-control" name="fatherorigin" placeholder="Name" type="text" value="#{employee.fatherorigin}">
+              div(class="col-md-4")
+               <label>Postal code</label>
+               <input class="form-control" name="postcode" placeholder="Name" type="number" value="#{employee.postcode}">
+             div(class="row" style="margin-bottom:20px;")
+              div(class="col-md-4")
+               <label>Instagram Name</label>
+               <input class="form-control" name="instagramname" placeholder="Name" type="text" value="#{employee.instagramname}">
+			   
+               <label>Facebook Name</label>
+               <input class="form-control" name="facebookname" placeholder="Name" type="text" value="#{employee.facebookname}">
+              div(class="col-md-4")
+               <label>Mobile Number</label>
+               <input class="form-control" name="mobilephone" placeholder="Name" type="text" value="#{employee.mobilephone}">
+              div(class="col-md-12")
+               <label>Home Address</label>
+               <input class="form-control" name="homeaddress" placeholder="Name" type="text" value="#{employee.homeaddress}">
+               <input type="hidden" name="id" value="#{id}">
+               input(type="submit" name="submit" value="Update" class="btn btn-custom right" style="background:blue; color:#fff; margin-top:15px;")
+          // Card footer
+// Argon Scripts
+// Core
+script(src='/views/assets/vendor/jquery/dist/jquery.min.js')
+script(src='/views/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')
+script(src='/views/assets/vendor/js-cookie/js.cookie.js')
+script(src='/views/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js')
+script(src='/views/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js')
+// Argon JS
+script(src='/views/assets/js/argon.js?v=1.2.0')

@@ -1,0 +1,59 @@
+include inc/header.pug        
+// Main content
+#panel.main-content
+ 
+  // Topnav
+  // Header
+  // Header
+  // Page content
+  .container-fluid.mt--6
+    
+    .row
+      .col
+        .card
+          // Card header
+          .card-header.border-0(style="margin-top:100px;")
+            <div _ngcontent-lgx-c105="" class="col-12 text-right" style="margin-top:15px; padding-right:30px;"><a _ngcontent-lgx-c105="" href="/admin/logout" class="btn btn-sm btn-primary">Logout</a></div>
+            h3.mb-0 Edit Course
+            
+          .card-body
+           each course in courseData
+            form(method='POST' action='/admin/updateCourse')
+             
+             div(class="row" style="margin-bottom:20px;")
+              div(class="col-md-4")
+               <label>Course Name</label>
+               <input class="form-control" name="name" placeholder="Name" type="text" value="#{course.name}">
+              div(class="col-md-4")
+               label Course Image
+               input(class="form-control" name="img" placeholder="image" type="file")
+               img(src='/views/uploads/'+course.img width="100" height="50") 
+              div(class="col-md-4")
+               label Price
+               input(class="form-control" name="price" placeholder="price" type="text" value= course.price)
+               
+              div(class="col-md-10" style="margin-top:20px;")
+               label Course
+               select(name="category_id" class="form-control")
+                option(value='' disabled) Choose Category
+                each category in categoryData 
+                 option(value=category._id selected=(course.category_id === category._id))= category.name
+               - var i = 1;
+               each cc in course.schedules
+                div(class="row")
+                 div(class="col-md-4" style="margin-top:20px;")
+                  label Enter Schedule #{i} date
+                  input(type="date", name="schedule_date"+i, class="form-control" style="max-width:100%" value=cc.date required)
+                
+                 div(class="col-md-5" style="margin-top:20px")
+                  label Enter Schedule #{i} time
+                  input(type="time", name="schedule_time"+i, class="form-control" style="max-width:100%" value=cc.time required)
+                  -i++
+
+              div(class="col-md-12" style="margin-top:20px;")
+               label Description
+               textarea(class="form-control" name="description" placeholder="Name") #{course.description}
+             
+               <input type="hidden" name="id" value="#{id}">
+               input(type="submit" name="submit" value="Update" class="btn btn-custom right" style="background:blue; color:#fff; margin-top:15px;")
+include inc/footer.pug
