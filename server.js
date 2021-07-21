@@ -706,3 +706,9 @@ app.get('/course/:id',async(req,res)=>{
                         
                         res.render('site/single-course.pug', {'id': req.params.id, courseData:course});
                         });
+
+app.get('/vendors',async(req,res)=>{
+    const vendors = await vendorModel.find();
+                        
+                        res.render('site/vendors.pug', {vendorData:vendors});
+                        });

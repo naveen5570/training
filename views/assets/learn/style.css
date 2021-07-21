@@ -24,3 +24,4 @@ p {line-height:28px;}
 .search {opacity:0.4; border-radius:40px; padding:10px 20px; width:100%;}
 .search_submit {position:absolute; right:15px; bottom:45px;  border:0; background:transparent}
 .search_submit span {background:transparent; color:#333}
+.vendors_page {background:#333;}

@@ -1,0 +1,39 @@
+include inc/header
+.forcefullwidth_wrapper_tp_banner(style='position:relative;width:100%;height:auto;margin-top:0px;margin-bottom:0px')
+  
+section#main_content_gray
+  .container
+    .row
+      .col-md-12.text-center
+        h2 Vendors
+        p.lead Lorem ipsum dolor sit amet, ius minim gubergren ad.
+    // End row
+    .row
+      each vendor in vendorData
+       .col-lg-3.col-md-6.col-sm-6
+        .col-item
+          span.ribbon_course
+          .photo
+            <a href="/vendor/#{vendor._id}"><img src="/views/uploads/#{vendor.img}"/></a>
+              
+            
+              
+          .info
+            .row
+              .course_info.col-md-12.col-sm-12
+                h4 #{vendor.name.substr(0,20)}
+                p #{vendor.description.substr(0,130)}
+                
+                
+            .separator.clearfix
+              
+              p.btn-details
+                a(href= 'vendor/'+vendor._id)
+                  i.icon-list
+                  |  Read More
+      
+    // End row
+    
+  // End container
+
+include inc/footer
