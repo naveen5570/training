@@ -18,12 +18,17 @@ include inc/header.pug
             
           .card-body
            each vendor in vendorData
-            form(method='POST' action='/admin/updateVendor')
+            form(method='POST' action='/admin/updateVendor' enctype="multipart/form-data")
              //h6(class="heading-small text-muted mb-4") User information
              div(class="row" style="margin-bottom:20px;")
-              div(class="col-md-8")
+              div(class="col-md-6")
                <label>Name</label>
                <input class="form-control" name="name" placeholder="Name" type="text" value="#{vendor.name}">
+              div(class="col-md-3")
+               label Vendor Image
+               input(class="form-control" name="img" placeholder="image" type="file")
+              div(class="col-md-3")
+               img(src="/views/uploads/"+vendor.img width="200" height="100" style="background:#333; padding:12px;")
               div(class="col-md-12" style="margin-top:20px;")
                label Description
                textarea(class="form-control" name="description" placeholder="Name") #{vendor.description}

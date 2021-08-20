@@ -19,3 +19,4 @@ require('./vendor.model');
 require('./product.model');
 require('./category.model');
 require('./course.model');
+require('./setting.model');

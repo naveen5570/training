@@ -1,0 +1,41 @@
+include inc/header
+section#main_content_gray
+  .container
+    .row
+      .col-md-12.text-center
+        h2 Courses
+        p.lead Lorem ipsum dolor sit amet, ius minim gubergren ad.
+    // End row
+    .row
+      each course in data
+       .col-lg-3.col-md-6.col-sm-6
+        .col-item
+          span.ribbon_course
+          .photo
+            <a href="/course/#{course._id}"><img src="/views/uploads/#{course.img}"/></a>
+              
+            
+              
+          .info
+            .row
+              .course_info.col-md-12.col-sm-12
+                h4 #{course.name.substr(0,20)}
+                p #{course.description.substr(0,130)}
+                
+                
+            .separator.clearfix
+              
+              p.btn-details
+                a(href= 'course/'+course._id)
+                  i.icon-list
+                  |  Read More
+              
+              
+        
+          
+          
+        
+      // End col-md-4
+    // End row
+  // End container
+include inc/footer

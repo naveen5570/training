@@ -302,7 +302,7 @@ res.redirect('/admin/login');
 
 var vendorModel = mongoose.model("Vendor");
 
-app.post('/admin/save-vendor',upload.single('img'), function(req,res,file){
+app.put('/admin/save-vendor',upload.single('img'), function(req,res){
     new vendorModel({
     name: req.body.name,
     description: req.body.description,
@@ -334,26 +334,54 @@ res.redirect('/admin/login');
 });
 
 app.get('/admin/edit-vendor/:id',async(req,res)=>{
+    if(req.session.email)
+    {
     var query = { _id: mongoose.Types.ObjectId(req.params.id)}
     const vendor = await vendorModel.find(query);
     res.render('admin/edit-vendor.pug', {'id': req.params.id, vendorData:vendor, role:req.session.role});
-    });
+    }
+    else
+    {
+        res.redirect('/admin/login');   
+    }    
+});
 
-    app.post('/admin/updateVendor', function(req, res){
+    app.post('/admin/updateVendor',upload.single('img'), function(req,res){
     
         //console.log(req.file.originalname);
         //var n = req.body.firstName;
         //console.log('test=>'+n);
         
         var query = {_id:req.body.id};
-        var newvalues = {$set: {name:req.body.name,description:req.body.description}};
+        if(req.file)
+        {
+         console.log('img update');  
+         var newvalues = {$set: {name:req.body.name,description:req.body.description, img:req.file.originalname}};
+            
+        vendorModel.update(query, newvalues, function(err, res) {
+            if (err) throw err;
+            console.log("1 document updated");
+            
+        }); 
+        }
+        else
+        {
+            console.log('img not update');
+            var newvalues = {$set: {name:req.body.name,description:req.body.description}};
             
         vendorModel.update(query, newvalues, function(err, res) {
             if (err) throw err;
             console.log("1 document updated");
             
         });
+        }
+
+
+        
+        
         res.redirect('back');
+    
+    
         });
 
         app.get('/admin/delete-vendor/:id',async(req,res)=>{
@@ -399,7 +427,7 @@ app.post('/admin/save-product',upload.single('img'), function(req, res, file){
 });
 });
 
-
+/*
 app.get("/admin/products", async (req, res) => {
     if(req.session.email)
     {
@@ -418,11 +446,19 @@ res.redirect('/admin/login');
 });
 
 app.get('/admin/edit-product/:id',async(req,res)=>{
+    if(req.session.email)
+    {
     var query = { _id: mongoose.Types.ObjectId(req.params.id)}
     const product = await productModel.find(query);
     const vendors = await vendorModel.find();
     res.render('admin/edit-product.pug', {'id': req.params.id, vendorData:vendors, productData:product, role:req.session.role});
-    });
+    }
+    else
+    {
+        res.redirect('/admin/login');   
+    }    
+
+});
 
     app.post('/admin/updateProduct', upload.single('img'), function(req, res, file){
     
@@ -431,14 +467,34 @@ app.get('/admin/edit-product/:id',async(req,res)=>{
         //console.log('test=>'+n);
         
         var query = {_id:req.body.id};
-        
-        var newvalues = {$set: {name:req.body.name, vendor_id:req.body.v_id, description:req.body.description}};
+        if(req.file)
+        {
+         console.log('img update');  
+         var newvalues = {$set: {name:req.body.name, vendor_id:req.body.v_id, description:req.body.description, img:req.file.originalname}};
+         
            
-        productModel.update(query, newvalues, function(err, res) {
+        categoryModel.update(query, newvalues, function(err, res) {
+            if (err) throw err;
+            console.log("1 document updated");
+            
+        }); 
+        }
+        else
+        {
+            console.log('img not update');
+            var newvalues = {$set: {name:req.body.name, vendor_id:req.body.v_id, description:req.body.description}};
+           
+            categoryModel.update(query, newvalues, function(err, res) {
             if (err) throw err;
             console.log("1 document updated");
             
         });
+        }
+
+
+        
+        
+        
         res.redirect('back');
         });
 
@@ -451,7 +507,7 @@ app.get('/admin/edit-product/:id',async(req,res)=>{
               });
             });
 
-
+*/
 
 
 
@@ -506,27 +562,51 @@ res.redirect('/admin/login');
 });
 
 app.get('/admin/edit-category/:id',async(req,res)=>{
+    if(req.session.email)
+    {
     var query = { _id: mongoose.Types.ObjectId(req.params.id)}
     const category = await categoryModel.find(query);
-    const products = await vendorModel.find();
-    res.render('admin/edit-category.pug', {'id': req.params.id, productData:products, categoryData:category, role:req.session.role});
-    });
+    const vendors = await vendorModel.find();
+    res.render('admin/edit-category.pug', {'id': req.params.id, vendorData:vendors, categoryData:category, role:req.session.role});
+    }
+    else
+    {
+        res.redirect('/admin/login');    
+    }    
+});
 
-app.post('/admin/updateCategory', upload.single('img'), function(req, res, file){
+app.post('/admin/updateCategory', upload.single('img'), function(req, res){
     
-        //console.log(req.file.originalname);
-        //var n = req.body.firstName;
-        //console.log('test=>'+n);
+        
         
         var query = {_id:req.body.id};
-        
-        var newvalues = {$set: {name:req.body.name, vendor_id:req.body.v_id, description:req.body.description}};
-           
+        if(req.file)
+        {
+         console.log('img update');  
+         var newvalues = {$set: {name:req.body.name, vendor_id:req.body.v_id, description:req.body.description, img:req.file.originalname}};
+            
+        categoryModel.update(query, newvalues, function(err, res) {
+            if (err) throw err;
+            console.log("1 document updated");
+            
+        }); 
+        }
+        else
+        {
+            console.log('img not update');
+            var newvalues = {$set: {name:req.body.name,vendor_id:req.body.v_id, description:req.body.description}};
+            
         categoryModel.update(query, newvalues, function(err, res) {
             if (err) throw err;
             console.log("1 document updated");
             
         });
+        }
+
+
+        
+        
+        
         res.redirect('back');
         });
 
@@ -619,11 +699,19 @@ res.redirect('/admin/login');
 });
 
 app.get('/admin/edit-course/:id',async(req,res)=>{
+    if(req.session.email)
+    {  
     var query = { _id: mongoose.Types.ObjectId(req.params.id)}
     const course = await courseModel.find(query);
     const categories = await categoryModel.find();
     res.render('admin/edit-course.pug', {'id': req.params.id, categoryData:categories, courseData:course, role:req.session.role});
-    });
+    }
+    else
+    {
+
+    res.redirect('/admin/login');
+    }
+});
 
 app.post('/admin/updateCourse', upload.single('img'), function(req, res, file){
     
@@ -632,29 +720,48 @@ app.post('/admin/updateCourse', upload.single('img'), function(req, res, file){
         //console.log('test=>'+n);
         var i=1;
     var schedule_arr=[];
-    while(i<=2)
+    while(i<=50)
     {
         
-        var qq= 'schedule_date'+i;
-        var hh= 'schedule_time'+i;
+        var qq= 'start_date'+i;
+        var hh= 'start_time'+i;
+        var qq1= 'end_date'+i;
+        var hh1= 'end_time'+i;
         var qu = req.body[qq];
         var hi = req.body[hh];
+        var qu1 = req.body[qq1];
+        var hi1 = req.body[hh1];
         if(qu)
         {
-         var obj = {date:qu, time:hi}
+         var obj = {startdate:qu, starttime:hi, enddate:qu1, endtime:hi1}
          schedule_arr.push(obj);
         }
         i++;
     }
+console.log(schedule_arr);
         var query = {_id:req.body.id};
-        
-        var newvalues = {$set: {name:req.body.name, price:req.body.price, category_id:req.body.category_id, schedules:schedule_arr, description:req.body.description}};
+        if(req.file)
+        {
+            var newvalues = {$set: {name:req.body.name, price:req.body.price, category_id:req.body.category_id, schedules:schedule_arr, description:req.body.description, img:req.file.originalname}};
            
-        courseModel.update(query, newvalues, function(err, res) {
-            if (err) throw err;
-            console.log("1 document updated");
-            
-        });
+            courseModel.update(query, newvalues, function(err, res) {
+                if (err) throw err;
+                console.log("1 document updated");
+                
+            });
+        }
+        else
+        {
+        
+            var newvalues = {$set: {name:req.body.name, price:req.body.price, category_id:req.body.category_id, schedules:schedule_arr, description:req.body.description}};
+           
+            courseModel.update(query, newvalues, function(err, res) {
+                if (err) throw err;
+                console.log("1 document updated");
+                
+            });    
+        }
+        
         res.redirect('back');
         });
 
@@ -666,6 +773,27 @@ app.get('/admin/delete-course/:id',async(req,res)=>{
                 res.redirect('back');
               });
             });
+
+
+var settingModel = mongoose.model("Setting");
+app.get('/admin/update-logo',async(req,res)=>{
+const setting = await settingModel.find();
+//console.log(setting.logo);
+res.render('admin/update-logo.pug',{logo:setting});
+});
+
+app.post('/admin/save-logo',upload.single('img'), function(req, res, file){
+    new settingModel({
+    logo: req.file.originalname,
+    }).save(function(err,doc){
+    if(err)res.json(err);
+    else console.log('success');
+    res.redirect('/admin/update-logo');
+    
+});
+});
+
+
 
 app.get('/',async (req,res)=>{
                 
@@ -712,3 +840,18 @@ app.get('/vendors',async(req,res)=>{
                         
                         res.render('site/vendors.pug', {vendorData:vendors});
                         });
+
+//search  
+app.get('/search',(req,res)=>{  
+    try {  
+    courseModel.find({$or:[{name:{'$regex':req.query.dsearch}}]},(err,data)=>{  
+    if(err){  
+    console.log(err);  
+    }else{  
+    res.render('site/search.pug',{data:data});  
+    }  
+    })  
+    } catch (error) {  
+    console.log(error);  
+    }  
+    });

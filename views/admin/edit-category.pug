@@ -18,23 +18,24 @@ include inc/header.pug
             
           .card-body
            each category in categoryData
-            form(method='POST' action='/admin/updateProduct')
+            form(method='POST' action='/admin/updateCategory' enctype="multipart/form-data")
              
              div(class="row" style="margin-bottom:20px;")
               div(class="col-md-6")
                <label>Category Name</label>
                <input class="form-control" name="name" placeholder="Name" type="text" value="#{category.name}">
-              div(class="col-md-6")
+              div(class="col-md-3")
                label Category Image
                input(class="form-control" name="img" placeholder="image" type="file")
-               img(src='/views/uploads/'+category.img width="100" height="50") 
+              div(class="col-md-3")
+               img(src="/views/uploads/"+category.img width="200" height="100" style="background:#333; padding:12px;") 
 
               div(class="col-md-10" style="margin-top:20px;")
-               label Product
-               select(name="product_id" class="form-control")
-                option(value='' disabled) Choose Product
-                each product in productData 
-                 option(value=product._id selected=(category.product_id === product._id))= product.name
+               label Vendor
+               select(name="v_id" class="form-control")
+                option(value='' disabled) Choose Vendor
+                each vendor in vendorData 
+                 option(value=vendor._id selected=(vendor._id == String(category.vendor_id)))= vendor.name
               div(class="col-md-12" style="margin-top:20px;")
                label Description
                textarea(class="form-control" name="description" placeholder="Name") #{category.description}
