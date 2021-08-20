@@ -22,10 +22,10 @@ include inc/header.pug
                   th.sort(scope='col' data-sort='name') Name
                   th.sort(scope='col' data-sort='image') Image
                   
-                  th.sort(scope='col' data-sort='category id') Category id
+                  th.sort(scope='col' data-sort='category id') Category
                   th.sort(scope='col' data-sort='description') Description
                   th.sort(scope='col' data-sort='price') price
-                  th.sort(scope='col' data-sort='schedules') Schedules
+                  
                   th.sort(scope='col' data-sort='actions') Actions
                   
               tbody.list
@@ -56,11 +56,7 @@ include inc/header.pug
                     span #{course.description.substr(0,30)}
                   td.budget
                     =course.price + " $"
-                  td.budget
-                    each schedule in course.schedules
-                     =schedule.date + ' '
-                     =schedule.time
-                     br
+                  
                   
                   td.text-right
                     a.dropdown-item(href="/admin/edit-course/"+course._id) Edit
