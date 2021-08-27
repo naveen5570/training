@@ -302,7 +302,7 @@ res.redirect('/admin/login');
 
 var vendorModel = mongoose.model("Vendor");
 
-app.put('/admin/save-vendor',upload.single('img'), function(req,res){
+app.post('/admin/save-vendor',upload.single('img'), function(req,res){
     new vendorModel({
     name: req.body.name,
     description: req.body.description,

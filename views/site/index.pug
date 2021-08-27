@@ -110,7 +110,7 @@ section#main_content_gray
             <a href="/course/#{course._id}"><img src="/views/uploads/#{course.img}"/></a>
               
             .cat_row
-              a(href='#')= course.category_id.name
+              a(href="/category/"+course.category_id._id)= course.category_id.name
               
           .info
             .row
@@ -121,10 +121,7 @@ section#main_content_gray
                 .price.pull-right= course.price + "$"
             .separator.clearfix
               
-              p.btn-details
-                a(href= 'course/'+course._id)
-                  i.icon-list
-                  |  Read More
+              
       
     // End row
     .row
