@@ -52,5 +52,5 @@ jobs:
       with:
         app-name: 'new-instrovate'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_08e43e29d44e443a8dd8924dd04718e6 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_696aefb5908641e2ac2d3c431a5fc45f }}
         package: .
