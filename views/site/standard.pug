@@ -1,0 +1,72 @@
+script.
+  var orderId ;
+  $(document).ready(function(){
+  var settings = {
+  "url": "/create/orderId",
+  "method": "POST",
+  "timeout": 0,
+  "headers": {
+  "Content-Type": "application/json"
+  },
+  "data": JSON.stringify({
+  "amount": "50000"
+  }),
+  };
+  //creates new orderId everytime
+  $.ajax(settings).done(function (response) {
+  orderId=response.orderId;
+  console.log(orderId);
+  $("button").show();
+  });
+  });
+button#rzp-button1 Pay
+script(src='https://checkout.razorpay.com/v1/checkout.js')
+script.
+  document.getElementById('rzp-button1').onclick = function(e){
+  var options = {
+  "key": "rzp_live_4Y3HvlRRXrcrLg", // Enter the Key ID generated from the Dashboard
+  "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+  "currency": "INR",
+  "name": "Acme Corp",
+  "description": "Test Transaction",
+  "image": "https://example.com/your_logo",
+  "order_id": orderId, //This is a sample Order ID. Pass the `id` obtained in the previous step
+  "handler": function (response){
+  alert(response.razorpay_payment_id);
+  alert(response.razorpay_order_id);
+  alert(response.razorpay_signature);
+  var settings = {
+  "url": "/api/payment/verify",
+  "method": "POST",
+  "timeout": 0,
+  "headers": {
+  "Content-Type": "application/json"
+  },
+  "data": JSON.stringify({response}),
+  }
+  },
+  "prefill": {
+  "name": "Gaurav Kumar",
+  "email": "gaurav.kumar@example.com",
+  "contact": "9999999999"
+  },
+  "notes": {
+  "address": "Razorpay Corporate Office"
+  },
+  "theme": {
+  "color": "#3399cc"
+  }
+  };
+  var rzp1 = new Razorpay(options);
+  rzp1.on('payment.failed', function (response){
+  alert(response.error.code);
+  alert(response.error.description);
+  alert(response.error.source);
+  alert(response.error.step);
+  alert(response.error.reason);
+  alert(response.error.metadata.order_id);
+  alert(response.error.metadata.payment_id);
+  });
+  rzp1.open();
+  e.preventDefault();
+  }

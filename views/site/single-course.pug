@@ -25,14 +25,16 @@ each course in courseData
         h3(style="padding-bottom:20px;") Schedules
         
         .row#schedules
+         - var i = 0
          each schedule in course.schedules
           .col-md-4
-           a(href="#")
+           a(href="/purchase/id="+course._id+"&schedule="+i)
             .schedules
              h4
               | Date: #{schedule.startdate} - #{schedule.enddate}
               br 
               | Time:  #{schedule.starttime} - #{schedule.endtime}
+          -i++
      
 
           

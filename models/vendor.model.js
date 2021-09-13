@@ -5,7 +5,7 @@ var vendorSchema = new mongoose.Schema({
     img:{type:String, required:true},
     dateAdded:{  type:Date, default:Date.now()}
   
-  });
+  },{ timestamps: true });
   
   
   mongoose.model('Vendor', vendorSchema);  

@@ -1,0 +1,60 @@
+include inc/header.pug        
+// Main content
+#panel.main-content
+ <div _ngcontent-lgx-c105="" class="col-12 text-right" style="margin-top:15px; padding-right:30px;"><a _ngcontent-lgx-c105="" href="/admin/logout" class="btn btn-sm btn-primary">Logout</a></div>
+  // Topnav
+  // Header
+  // Header
+  // Page content
+  .container-fluid.mt--6
+    .row(style="margin-top:100px;")
+      .col
+        .card
+          // Card header
+          .card-header.border-0
+            h3.mb-0 Orders
+          // Light table
+          .table-responsive
+            table(class="table align-items-center table-flush" id="example")
+              thead.thead-light
+                tr
+                  th.sort(scope='col' data-sort='name') S. No.
+                  th.sort(scope='col' data-sort='budget') Name
+                  th.sort(scope='col' data-sort='status') Course
+                  th.sort(scope='col' data-sort='status') Schedule
+                  th.sort(scope='col' data-sort='status') Payment Status
+                  th.sort(scope='col' data-sort='status') Price
+                  
+              tbody.list
+               p(style="display:none;")- var i = 1;
+               each order in orderData
+                tr
+                  td(scope='row')
+                    .media.align-items-center
+                      .media-body
+                        span.name.mb-0.text-sm= i
+                  td(scope='row')
+                    .media.align-items-center
+                      .media-body
+                        span.name.mb-0.text-sm
+                         =order.name
+                  
+                  td(scope='row')
+                    .media.align-items-center
+                      .media-body
+                        span.name.mb-0.text-sm
+                         =order.course 
+                  td(scope='row')
+                    .media.align-items-center
+                      .media-body
+                        span.name.mb-0.text-sm
+                         =order.schedule       
+                  td.budget
+                    span #{order.payment_status}
+                  
+                  td.text-right
+                    span $#{order.price/100}
+                span(style="display:none;")=i=i+1    
+
+include inc/footer.pug                
+          

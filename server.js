@@ -1,6 +1,7 @@
 require('./models/db');
 
 const express = require('express');
+
 var session = require('express-session');
 const path = require('path');
 const exphbs = require('express-handlebars');
@@ -8,6 +9,7 @@ const passport = require('passport');
 const bodyparser = require('body-parser');
 const mongoose = require('mongoose');
 var nodemailer = require('nodemailer'); 
+var Razorpay = require('razorpay');
 const employeeController = require('./controllers/employeeController');
 const { ensureAuthenticated } = require('./config/auth');
 var app = express();
@@ -39,7 +41,7 @@ app.use(bodyparser.json());
 app.set('views', path.join(__dirname, '/views/'));
 app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: 'mainLayout', layoutsDir: __dirname + '/views/layouts/' }));
 app.set('view engine', 'hbs');
-var server=app.listen(process.env.PORT || 3000,function()
+var server=app.listen(process.env.PORT || 8080,function()
 {
 })
 app.use('/views', express.static(__dirname + '/views'));
@@ -69,54 +71,11 @@ var transporter = nodemailer.createTransport({
 app.use(session({secret:'XASDASDA'}));
 
 var employees = mongoose.model("Employee");
-app.get("/admin/employees", async (req, res) => {
-    if(req.session.email)
-    {
+
+
+
+
     
-    const posts = await employees.find();
-    var string = JSON.stringify(posts);
-    var employeeData = JSON.parse(string);
-    console.log(req.session.email);
-
-    res.render('new/employees.pug', {employeeData:employeeData, role:req.session.role});
-}
-else
-{
-res.redirect('/admin/login');
-}
-});
-
-app.get('/admin/edit-employee/:id',async(req,res)=>{
-    var query = { _id: mongoose.Types.ObjectId(req.params.id)}
-    const employee = await employees.find(query);
-    res.render('new/edit-employee.pug', {'id': req.params.id, employeeData:employee, role:req.session.role});
-    });
-
-    app.post('/admin/updateEmployee', function(req, res){
-    
-        //console.log(req.file.originalname);
-        //var n = req.body.firstName;
-        //console.log('test=>'+n);
-        
-        var query = {_id:req.body.id};
-        var newvalues = {$set: {firstName:req.body.firstName,Surname:req.body.Surname,email:req.body.email,gender:req.body.gender,profession:req.body.profession,age:req.body.age,fatherorigin:req.body.fatherorigin,postcode:req.body.postcode,instagramname:req.body.instagramname,twittername:req.body.twittername,facebookname:req.body.facebookname,mobilephone:req.body.mobilephone,homeaddress:req.body.homeaddress}};
-            
-        employees.update(query, newvalues, function(err, res) {
-            if (err) throw err;
-            console.log("1 document updated");
-            
-        });
-        res.redirect('back');
-        });
-
-        app.get('/admin/delete-employee/:id',async(req,res)=>{
-            var query = { _id:req.params.id};
-            const employee = await employees.remove(query, function(err, obj) {
-                if (err) throw err;
-                console.log("1 document(s) deleted");
-                res.redirect('back');
-              });
-            });
 
             
 
@@ -855,3 +814,138 @@ app.get('/search',(req,res)=>{
     console.log(error);  
     }  
     });
+
+
+// purchase page
+
+app.get('/purchase/id=:id&schedule=:schedule',async(req,res)=>{
+    var query = { _id: mongoose.Types.ObjectId(req.params.id)}
+    
+    const course = await courseModel.find(query);
+    course.forEach(element => {
+        
+    var sched = 'Date: '+element.schedules[req.params.schedule].startdate+' to '+element.schedules[req.params.schedule].enddate+' Timings: '+element.schedules[req.params.schedule].starttime+' to '+element.schedules[req.params.schedule].endtime;
+    //console.log(sched);
+    var price = element.price;
+    //console.log(price);
+    var course_id = element._id;
+    var course_name = element.name;
+    //console.log(course_id);
+    res.render('site/purchase.pug', {schedule:sched, price:price, course_id:course_id, course_name:course_name });      
+});
+    
+    //res.render('site/single-course.pug', {'id': req.params.id, courseData:course});
+    });
+
+
+
+
+
+// Razorpay Payment configurations
+
+app.get('/payment', function(req,res){
+    res.render('site/standard.pug');
+});
+
+var instance = new Razorpay({
+    key_id: 'rzp_test_rF6DE6mn9DYb6v',
+    key_secret: '8hj0CXTnVrsdWniOcG66NwJE',
+  });
+
+var orderModel = mongoose.model("Order");
+
+app.post('/create/orderId',(req,res)=>{
+console.log(req.body);
+var options = {
+    amount: req.body.amount,  // amount in the smallest currency unit
+    currency: "USD",
+    receipt: "order_rcptid_11"
+  };
+  instance.orders.create(options, function(err, order) {
+    //console.log(order);
+    
+    new orderModel({
+        
+        course: req.body.course,
+        schedule: req.body.schedule,
+        name:req.body.name,
+        email:req.body.email,
+        phone:req.body.phone,
+        payment_id:'',
+        price: req.body.amount,
+        order_id:order.id,
+        payment_status:'initiated'
+        }).save(function(err,doc){
+        if(err)res.json(err);
+        else console.log('success');
+        //res.redirect('/admin/new-vendor');
+        res.send({orderId:order.id});
+  });
+
+
+});
+});
+
+
+
+
+
+app.post("/api/payment/verify",async(req,res)=>{
+     
+    let body=req.body.response.razorpay_order_id + "|" + req.body.response.razorpay_payment_id;
+   
+     var crypto = require("crypto");
+     var expectedSignature = crypto.createHmac('sha256', '8hj0CXTnVrsdWniOcG66NwJE')
+                                     .update(body.toString())
+                                     .digest('hex');
+                                     console.log("sig received " ,req.body.response.razorpay_signature);
+                                     console.log("sig generated " ,expectedSignature);
+     var response = {"signatureIsValid":"false"}
+     if(expectedSignature === req.body.response.razorpay_signature)
+     {
+        var query = { order_id: req.body.response.razorpay_order_id}
+    
+        const order = await orderModel.find(query);
+        var newvalues = {$set: {payment_id:req.body.response.razorpay_payment_id,payment_status:"completed"}};
+            
+        orderModel.update(query, newvalues, function(err, res) {
+            if (err) throw err;
+            console.log("1 document updated");
+            
+        });
+        var mailOptions = {
+            from: 'naveen@markuplounge.com',
+            to: req.body.email,
+            subject: 'New Order',
+            text: "New schedule booked"
+          };  
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+        });
+      response={"signatureIsValid":"true"}
+      res.send(response);
+
+     }
+        });
+   
+   
+app.get("/admin/orders", async (req, res) => {
+            if(req.session.email)
+            {
+            
+            const posts = await orderModel.find();
+            var string = JSON.stringify(posts);
+            var vendorData = JSON.parse(string);
+            console.log(req.session.email);
+        
+            res.render('admin/orders.pug', {orderData:vendorData, role:req.session.role});
+        }
+        else
+        {
+        res.redirect('/admin/login');
+        }
+        });

@@ -15,7 +15,7 @@ var courseSchema = new mongoose.Schema({
              }],
     dateAdded:{  type:Date, default:Date.now()}
   
-  });
+  },{ timestamps: true });
   
   
   mongoose.model('Course', courseSchema);  

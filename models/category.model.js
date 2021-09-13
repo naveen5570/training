@@ -8,7 +8,7 @@ var categorySchema = new mongoose.Schema({
         },
     dateAdded:{  type:Date, default:Date.now()}
   
-  });
+  },{ timestamps: true });
   
   
   mongoose.model('Category', categorySchema);  
