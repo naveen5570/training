@@ -9,7 +9,7 @@ const passport = require('passport');
 const bodyparser = require('body-parser');
 const mongoose = require('mongoose');
 var nodemailer = require('nodemailer'); 
-var Razorpay = require('razorpay');
+var razorpay = require('razorpay');
 const employeeController = require('./controllers/employeeController');
 const { ensureAuthenticated } = require('./config/auth');
 var app = express();
@@ -847,7 +847,7 @@ app.get('/payment', function(req,res){
     res.render('site/standard.pug');
 });
 
-var instance = new Razorpay({
+var instance = new razorpay({
     key_id: 'rzp_test_rF6DE6mn9DYb6v',
     key_secret: '8hj0CXTnVrsdWniOcG66NwJE',
   });
