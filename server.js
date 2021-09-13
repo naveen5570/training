@@ -41,7 +41,7 @@ app.use(bodyparser.json());
 app.set('views', path.join(__dirname, '/views/'));
 app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: 'mainLayout', layoutsDir: __dirname + '/views/layouts/' }));
 app.set('view engine', 'hbs');
-var server=app.listen(process.env.PORT || 3000,function()
+var server=app.listen(process.env.PORT || 8080,function()
 {
 })
 app.use('/views', express.static(__dirname + '/views'));
@@ -855,31 +855,35 @@ var instance = new razorpay({
 var orderModel = mongoose.model("Order");
 
 app.post('/create/orderId',(req,res)=>{
-console.log(req.body);
+console.log(req.body.name);
 var options = {
     amount: req.body.amount,  // amount in the smallest currency unit
     currency: "USD",
     receipt: "order_rcptid_11"
   };
   instance.orders.create(options, function(err, order) {
-    //console.log(order);
+    console.log(order);
     
     new orderModel({
         
         course: req.body.course,
         schedule: req.body.schedule,
-        name:req.body.name,
-        email:req.body.email,
-        phone:req.body.phone,
+        
         payment_id:'',
         price: req.body.amount,
         order_id:order.id,
         payment_status:'initiated'
         }).save(function(err,doc){
-        if(err)res.json(err);
-        else console.log('success');
+        if(err)
+        {
+        res.json(err);
+        }
+        else 
+        {
+        console.log('success');
         //res.redirect('/admin/new-vendor');
         res.send({orderId:order.id});
+        }
   });
 
 
@@ -906,7 +910,7 @@ app.post("/api/payment/verify",async(req,res)=>{
         var query = { order_id: req.body.response.razorpay_order_id}
     
         const order = await orderModel.find(query);
-        var newvalues = {$set: {payment_id:req.body.response.razorpay_payment_id,payment_status:"completed"}};
+        var newvalues = {$set: {name:req.body.name, email:req.body.email, phone:req.body.phone, payment_id:req.body.response.razorpay_payment_id,payment_status:"completed"}};
             
         orderModel.update(query, newvalues, function(err, res) {
             if (err) throw err;
@@ -927,7 +931,7 @@ app.post("/api/payment/verify",async(req,res)=>{
             }
         });
       response={"signatureIsValid":"true"}
-      res.send(response);
+      return res.send(response);
 
      }
         });

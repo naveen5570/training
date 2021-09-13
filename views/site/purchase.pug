@@ -53,10 +53,9 @@ script.
   },
   "data": JSON.stringify({
   "amount": "#{price}"*100,
-  "name": $('#name_contact').val(),
+  
   "schedule": $('#schedule').val(),
-  "phone": $('#phone_contact').val(),
-  "email": $('#email_contact').val(),
+  
   "course":"#{course_name}",
   
   }),
@@ -83,7 +82,7 @@ script.
   "handler": function (response){
   //alert(response.razorpay_payment_id);
   //alert(response.razorpay_order_id);
-     alert(response.razorpay_signature) 
+  //alert(response.razorpay_signature) 
   
      var settings = {
       "url": "/api/payment/verify",
@@ -92,11 +91,13 @@ script.
       "headers": {
       "Content-Type": "application/json"
   },
-  "data": JSON.stringify({response}),
+  "data": JSON.stringify({response,"name": $('#name_contact').val(),
+  "phone": $('#phone_contact').val(),
+  "email": $('#email_contact').val(),}),
   }
   //creates new orderId everytime
   $.ajax(settings).done(function (response) {
-  alert(JSON.stringify(response));
+  //alert(JSON.stringify(response));
   });
   
   },
