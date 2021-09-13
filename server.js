@@ -41,7 +41,7 @@ app.use(bodyparser.json());
 app.set('views', path.join(__dirname, '/views/'));
 app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: 'mainLayout', layoutsDir: __dirname + '/views/layouts/' }));
 app.set('view engine', 'hbs');
-var server=app.listen(process.env.PORT || 8080,function()
+var server=app.listen(process.env.PORT || 3000,function()
 {
 })
 app.use('/views', express.static(__dirname + '/views'));
