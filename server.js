@@ -932,11 +932,17 @@ app.post("/api/payment/verify",async(req,res)=>{
         });
       response={"signatureIsValid":"true"}
       return res.send(response);
-
+      
      }
         });
    
-   
+
+
+app.get("/thank-you", function(req, res){
+res.render('site/thanks.pug');    
+});
+        
+
 app.get("/admin/orders", async (req, res) => {
             if(req.session.email)
             {

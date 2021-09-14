@@ -1,0 +1,15 @@
+include inc/header
+script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+script(src='https://checkout.razorpay.com/v1/checkout.js')
+
+.container
+ .row
+  .col-md-12.purchase
+   .box_style_2
+    span.tape
+    .row
+      .col-md-12
+        //h3 Purchase #{course_name}
+    #message-contact(style="text-align:center; font-size:30px; line-height:46px")
+     span Your Payment is successfully completed.<br> You are now enrolled.    
+include inc/footer
