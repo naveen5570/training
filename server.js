@@ -920,8 +920,8 @@ app.post("/api/payment/verify",async(req,res)=>{
         var mailOptions = {
             from: 'naveen@markuplounge.com',
             to: req.body.email,
-            subject: 'New Order',
-            text: "New schedule booked"
+            subject: 'Confirmation',
+            text: "Your schedule booked"
           };  
           transporter.sendMail(mailOptions, function(error, info){
             if (error) {
