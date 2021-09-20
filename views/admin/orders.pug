@@ -53,7 +53,7 @@ include inc/header.pug
                     span #{order.payment_status}
                   
                   td.text-right
-                    span $#{order.price/100}
+                    span ₹ #{order.price/100}
                 span(style="display:none;")=i=i+1    
 
 include inc/footer.pug                
