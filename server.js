@@ -753,7 +753,7 @@ app.post('/admin/save-logo',upload.single('img'), function(req, res, file){
 });
 
 
-
+var homeModel = mongoose.model("Home");
 app.get('/',async (req,res)=>{
                 
                 /*
@@ -765,7 +765,8 @@ app.get('/',async (req,res)=>{
                 req.session.email; 
                 const vendors = await vendorModel.find();
                 const courses = await courseModel.find().limit(4).populate('category_id');
-                res.render('site/index.pug',{vendorData:vendors, courseData:courses});
+                const homecontent = await homeModel.find();
+                res.render('site/index.pug',{vendorData:vendors, courseData:courses, homecontent:homecontent});
                 
              });
 
@@ -959,3 +960,39 @@ app.get("/admin/orders", async (req, res) => {
         res.redirect('/admin/login');
         }
         });
+
+
+
+
+app.get('/admin/edit-homecontent',async(req,res)=>{
+            if(req.session.email)
+            {
+          
+            const home = await homeModel.find();
+            res.render('admin/edit-homecontent.pug', {homeData:home, role:req.session.role});
+            }
+            else
+            {
+                res.redirect('/admin/login');   
+            }    
+        });
+        
+app.post('/admin/updateHomecontent', function(req,res){
+            
+                //console.log(req.file.originalname);
+                //var n = req.body.firstName;
+                //console.log('test=>'+n);
+                
+                var query = {_id:req.body.id};
+                
+                    
+                    var newvalues = {$set: {topcontent:req.body.topcontent,vendorcontent:req.body.vendorcontent,coursecontent:req.body.coursecontent}};
+                    
+                homeModel.update(query, newvalues, function(err, res) {
+                    if (err) throw err;
+                    console.log("1 document updated");
+                    
+                });
+                res.redirect('back');       
+            });
+        

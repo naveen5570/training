@@ -1,0 +1,37 @@
+include inc/header.pug        
+// Main content
+#panel.main-content
+ 
+  // Topnav
+  // Header
+  // Header
+  // Page content
+  .container-fluid.mt--6
+    
+    .row
+      .col
+        .card
+          // Card header
+          .card-header.border-0(style="margin-top:100px;")
+            <div _ngcontent-lgx-c105="" class="col-12 text-right" style="margin-top:15px; padding-right:30px;"><a _ngcontent-lgx-c105="" href="/admin/logout" class="btn btn-sm btn-primary">Logout</a></div>
+            h3.mb-0 Edit Vendor
+            
+          .card-body
+           each home in homeData
+            form(method='POST' action='/admin/updateHomecontent')
+             //h6(class="heading-small text-muted mb-4") User information
+             div(class="row" style="margin-bottom:20px;")
+              div(class="col-md-6")
+               label Top Section Content
+               <input class="form-control" name="topcontent" placeholder="topcontent" type="text" value="#{home.topcontent}">
+              div(class="col-md-12" style="margin-top:20px;")
+               label Vendor Section Content
+               textarea(class="form-control" name="vendorcontent" placeholder="vendorcontent") #{home.vendorcontent}
+              
+              div(class="col-md-12" style="margin-top:20px;")
+               label Course Section Content
+               textarea(class="form-control" name="coursecontent" placeholder="coursecontent") #{home.coursecontent}
+             
+               <input type="hidden" name="id" value="#{home._id}">
+               input(type="submit" name="submit" value="Update" class="btn btn-custom right" style="background:blue; color:#fff; margin-top:15px;")
+include inc/footer.pug
