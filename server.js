@@ -995,4 +995,42 @@ app.post('/admin/updateHomecontent', function(req,res){
                 });
                 res.redirect('back');       
             });
+
+
+var requestModel = mongoose.model("Request");
+
+app.post('/request-form', function(req,res){
+                new requestModel({
+                name: req.body.full_name,
+                email: req.body.email,
+                phone: req.body.phone,
+                state: req.body.state,
+                job_title: req.body.job_title,
+                company:req.body.company,
+                
+                }).save(function(err,doc){
+                if(err)res.json(err);
+                else console.log('success');
+                res.redirect('back');
+                //else res.render('user/application2',{id:doc._id});
+            });
+            });
         
+
+app.get("/admin/requests", async (req, res) => {
+                if(req.session.email)
+                {
+                
+                const posts = await requestModel.find();
+                var string = JSON.stringify(posts);
+                var requestData = JSON.parse(string);
+                console.log(req.session.email);
+            
+                res.render('admin/requests.pug', {requestData:requestData, role:req.session.role});
+            }
+            else
+            {
+            res.redirect('/admin/login');
+            }
+            });
+            

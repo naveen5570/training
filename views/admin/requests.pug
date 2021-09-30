@@ -1,0 +1,68 @@
+include inc/header.pug          
+// Main content
+#panel.main-content
+ <div _ngcontent-lgx-c105="" class="col-12 text-right" style="margin-top:15px; padding-right:30px;"><a _ngcontent-lgx-c105="" href="/admin/logout" class="btn btn-sm btn-primary">Logout</a></div>
+  // Topnav
+  // Header
+  // Header
+  // Page content
+  .container-fluid.mt--6
+    .row(style="margin-top:100px;")
+      .col
+        .card
+          // Card header
+          .card-header.border-0
+            h3.mb-0 Requests
+          // Light table
+          .table-responsive
+            table(class="table align-items-center table-flush" id="example")
+              thead.thead-light
+                tr
+                  th.sort(scope='col' data-sort='name') S. No.
+                  th.sort(scope='col' data-sort='name') Full Name
+                  th.sort(scope='col' data-sort='image') Email
+                  
+                  th.sort(scope='col' data-sort='category id') Phone
+                  th.sort(scope='col' data-sort='description') State
+                  th.sort(scope='col' data-sort='price') Job Title
+                  th.sort(scope='col' data-sort='price') Company
+                  
+                  
+                  
+              tbody.list
+               p(style="display:none;")- var i = 1;
+               each request in requestData
+                tr
+                  td
+                    .media.align-items-center
+                      .media-body
+                        span.name.mb-0.text-sm= i
+                  td
+                    .media.align-items-center
+                      .media-body
+                        span.name.mb-0.text-sm
+                         =request.name
+                  td
+                    .media.align-items-center
+                      .media-body
+                        span.name.mb-0.text-sm
+                         =request.email 
+                  td
+                    .media.align-items-center
+                      .media-body
+                        span.name.mb-0.text-sm
+                         =request.phone
+                      
+                  td.budget
+                    span.name.mb-0.text-sm  
+                     =request.state
+                  td.budget
+                    span.name.mb-0.text-sm  
+                     =request.job_title
+                  
+                  
+                  td.budget
+                    span.name.mb-0.text-sm  
+                     =request.company
+                span(style="display:none;")=i=i+1    
+include inc/footer.pug          

@@ -39,10 +39,21 @@ each course in courseData
 
           
       aside.col-md-4
-        .box_style_1(style="text-align:center;")
-          
+        .box_style_1(style="text-align:center; border:0px; box-shadow:inset 0 0 0 0px #e0e5e9;")
           h4(style="text-align:center; border:0")= 'Price: ₹'+ course.price
           a(class="enroll_button" href="#schedules") Enroll Now
+
+        .box_style_1(style="text-align:center;")
+          h4 Request For More Information
+          form(method="post" class="form-group request_form" action="/request-form")
+           input(type="text" placeholder="Full Name*" name="full_name" required)
+           input(type="email" placeholder="Email Address*" name="email" required)
+           input(type="text" placeholder="Phone Number*" name="phone" required)
+           input(type="text" placeholder="State*" name="state" required)
+           input(type="text" placeholder="Job Title*" name="job_title" required)
+           input(type="text" placeholder="Company Name*" name="company" required)
+           input(type="submit" name="Submit" value="Submit" class="btn btn-success")
+          
               
               
         

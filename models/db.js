@@ -22,3 +22,4 @@ require('./course.model');
 require('./setting.model');
 require('./order.model');
 require('./home.model');
+require('./request.model');
