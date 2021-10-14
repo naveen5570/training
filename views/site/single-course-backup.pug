@@ -19,9 +19,9 @@ each course in courseData
         a(href='/') Home
       li.active= course.name
     .row
-      .col-md-9
+      .col-md-8
         h2= course.name
-        p !{course.description}
+        p= course.description
         div(class="tabs")
          a(href="#schedules") Schedules
          a(href="#details") Course Details 
@@ -41,14 +41,14 @@ each course in courseData
               | Time:  #{schedule.starttime} - #{schedule.endtime}
           -i++
         h3(style="padding-bottom:20px;" id="details") Course Details
-        | !{course.course_detail}
+        = course.course_detail
         h3(style="padding-bottom:20px;" id="target_audience") Target Audience
-        | !{course.target_audience}
+        = course.target_audience
         h3(style="padding-bottom:20px;" id="related") Related
-        | !{course.related}
+        = course.related
 
           
-      aside.col-md-3
+      aside.col-md-4
         .box_style_1(style="text-align:center; border:0px; box-shadow:inset 0 0 0 0px #e0e5e9;")
           h4(style="text-align:center; border:0")= 'Price: ₹'+ course.price
           a(class="enroll_button" href="#schedules") Enroll Now

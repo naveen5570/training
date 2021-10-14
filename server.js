@@ -625,6 +625,9 @@ console.log(schedule_arr);
     new courseModel({
     name: req.body.name,
     description: req.body.description,
+    course_detail: req.body.course_detail,
+    target_audience: req.body.target_audience,
+    related: req.body.related,
     img: req.file.originalname,
     price: req.body.price,
     category_id:req.body.category_id,
@@ -701,9 +704,9 @@ console.log(schedule_arr);
         var query = {_id:req.body.id};
         if(req.file)
         {
-            var newvalues = {$set: {name:req.body.name, price:req.body.price, category_id:req.body.category_id, schedules:schedule_arr, description:req.body.description, img:req.file.originalname}};
+            var newvalues = {$set: {name:req.body.name, price:req.body.price, category_id:req.body.category_id, schedules:schedule_arr, description:req.body.description, course_detail:req.body.course_detail, target_audience:req.body.target_audience, related:req.body.related, img:req.file.originalname}};
            
-            courseModel.update(query, newvalues, function(err, res) {
+            courseModel.updateOne(query, newvalues, function(err, res) {
                 if (err) throw err;
                 console.log("1 document updated");
                 
@@ -712,7 +715,7 @@ console.log(schedule_arr);
         else
         {
         
-            var newvalues = {$set: {name:req.body.name, price:req.body.price, category_id:req.body.category_id, schedules:schedule_arr, description:req.body.description}};
+            var newvalues = {$set: {name:req.body.name, price:req.body.price, category_id:req.body.category_id, schedules:schedule_arr, description:req.body.description, course_detail:req.body.course_detail, target_audience:req.body.target_audience, related:req.body.related}};
            
             courseModel.update(query, newvalues, function(err, res) {
                 if (err) throw err;

@@ -39,3 +39,8 @@ ul.sf-menu li:first-child a {padding-left:0;}
 .search_text {font-size:8vw;}
 
 }
+
+.tabs {background:#ddd; width:100%; padding:10px; position: sticky; top:0; z-index: 999;}
+.tabs a {padding:0 20px; font-size:18px;}
+
+.container {width:1280px;}

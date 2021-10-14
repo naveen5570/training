@@ -66,8 +66,19 @@ include inc/header.pug
              div(class="row")
               div(class="col-md-12" style="margin-top:20px;")
                label Description
-               textarea(class="form-control" name="description" placeholder="Name") #{course.description}
-             
+               textarea(class="form-control edit" name="description" placeholder="Name") #{course.description}
+             div(class="row" style="margin-bottom:20px;") 
+              div(class="col-md-12" style="margin-top:20px;")
+               label Details
+               textarea(class="form-control edit" name="course_detail" style="width:100%;" placeholder="Detail") #{course.course_detail}
+             div(class="row" style="margin-bottom:20px;") 
+              div(class="col-md-12" style="margin-top:20px;")
+               label Target Audience
+               textarea(class="form-control edit" name="target_audience" style="width:100%;" ) #{course.target_audience}
+             div(class="row" style="margin-bottom:20px;") 
+              div(class="col-md-12" style="margin-top:20px;")
+               label Related
+               textarea(class="form-control edit" name="related" style="width:100%;") #{course.related}
                input(type="hidden" name="id" value=id)
                input(type="submit" name="submit" value="Update" class="btn btn-custom right" style="background:blue; color:#fff; margin-top:15px;")
 include inc/footer.pug
