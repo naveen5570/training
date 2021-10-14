@@ -624,7 +624,7 @@ app.post('/admin/save-course',upload.single('img'), function(req, res, file){
 console.log(schedule_arr);
     new courseModel({
     name: req.body.name,
-    description: req.body.description,
+    description: req.body.course_description,
     course_detail: req.body.course_detail,
     target_audience: req.body.target_audience,
     related: req.body.related,
@@ -704,7 +704,7 @@ console.log(schedule_arr);
         var query = {_id:req.body.id};
         if(req.file)
         {
-            var newvalues = {$set: {name:req.body.name, price:req.body.price, category_id:req.body.category_id, schedules:schedule_arr, description:req.body.description, course_detail:req.body.course_detail, target_audience:req.body.target_audience, related:req.body.related, img:req.file.originalname}};
+            var newvalues = {$set: {name:req.body.name, price:req.body.price, category_id:req.body.category_id, schedules:schedule_arr, description:req.body.course_description, course_detail:req.body.course_detail, target_audience:req.body.target_audience, related:req.body.related, img:req.file.originalname}};
            
             courseModel.updateOne(query, newvalues, function(err, res) {
                 if (err) throw err;
@@ -715,7 +715,7 @@ console.log(schedule_arr);
         else
         {
         
-            var newvalues = {$set: {name:req.body.name, price:req.body.price, category_id:req.body.category_id, schedules:schedule_arr, description:req.body.description, course_detail:req.body.course_detail, target_audience:req.body.target_audience, related:req.body.related}};
+            var newvalues = {$set: {name:req.body.name, price:req.body.price, category_id:req.body.category_id, schedules:schedule_arr, description:req.body.course_description, course_detail:req.body.course_detail, target_audience:req.body.target_audience, related:req.body.related}};
            
             courseModel.update(query, newvalues, function(err, res) {
                 if (err) throw err;
