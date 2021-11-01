@@ -50,10 +50,11 @@ include inc/header.pug
                     .media.align-items-center
                       .media-body
                         span.name.mb-0.text-sm
-                         =course.category_id.name
+                         if course.category_id
+                          =course.category_id.name
                       
                   td.budget
-                    span #{course.description.substr(0,30)}
+                    span !{course.description.substr(0,30)}
                   td.budget
                     =course.price + " ₹"
                   

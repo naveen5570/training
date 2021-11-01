@@ -47,10 +47,12 @@ include inc/header.pug
                     .media.align-items-center
                       .media-body
                         span.name.mb-0.text-sm
-                         =category.vendor_id.name
+                         if category.vendor_id
+                          =category.vendor_id.name
+                        
                       
                   td.budget
-                    span #{category.description.substr(0,30)}
+                    span !{category.description.substr(0,30)}
                   
                   td.text-right
                     a.dropdown-item(href="/admin/edit-category/"+category._id) Edit

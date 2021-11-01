@@ -45,7 +45,7 @@ include inc/header.pug
                          img(src='/views/uploads/'+vendor.img width="100" height="50") 
                          
                   td.budget
-                    span #{vendor.description.substr(0,30)}
+                    span !{vendor.description.substr(0,30)}
                   
                   td.text-right
                     a.dropdown-item(href="/admin/edit-vendor/"+vendor._id) Edit
