@@ -265,6 +265,7 @@ app.post('/admin/save-vendor',upload.single('img'), function(req,res){
     new vendorModel({
     name: req.body.name,
     description: req.body.description,
+    cat_excerpt: req.body.cat_excerpt,
     img: req.file.originalname,
     }).save(function(err,doc){
     if(err)res.json(err);
@@ -315,7 +316,7 @@ app.get('/admin/edit-vendor/:id',async(req,res)=>{
         if(req.file)
         {
          console.log('img update');  
-         var newvalues = {$set: {name:req.body.name,description:req.body.description, img:req.file.originalname}};
+         var newvalues = {$set: {name:req.body.name,description:req.body.description, cat_excerpt:req.body.cat_excerpt, img:req.file.originalname}};
             
         vendorModel.update(query, newvalues, function(err, res) {
             if (err) throw err;
@@ -326,7 +327,7 @@ app.get('/admin/edit-vendor/:id',async(req,res)=>{
         else
         {
             console.log('img not update');
-            var newvalues = {$set: {name:req.body.name,description:req.body.description}};
+            var newvalues = {$set: {name:req.body.name,description:req.body.description, cat_excerpt:req.body.cat_excerpt}};
             
         vendorModel.update(query, newvalues, function(err, res) {
             if (err) throw err;
@@ -492,6 +493,7 @@ app.post('/admin/save-category',upload.single('img'), function(req, res, file){
     new categoryModel({
     name: req.body.name,
     description: req.body.description,
+    course_excerpt: req.body.course_excerpt,
     img: req.file.originalname,
     vendor_id:req.body.product_id
     }).save(function(err,doc){
@@ -542,7 +544,7 @@ app.post('/admin/updateCategory', upload.single('img'), function(req, res){
         if(req.file)
         {
          console.log('img update');  
-         var newvalues = {$set: {name:req.body.name, vendor_id:req.body.v_id, description:req.body.description, img:req.file.originalname}};
+         var newvalues = {$set: {name:req.body.name,course_excerpt:req.body.course_excerpt, vendor_id:req.body.v_id, description:req.body.description, img:req.file.originalname}};
             
         categoryModel.update(query, newvalues, function(err, res) {
             if (err) throw err;
@@ -553,7 +555,7 @@ app.post('/admin/updateCategory', upload.single('img'), function(req, res){
         else
         {
             console.log('img not update');
-            var newvalues = {$set: {name:req.body.name,vendor_id:req.body.v_id, description:req.body.description}};
+            var newvalues = {$set: {name:req.body.name, course_excerpt:req.body.course_excerpt, vendor_id:req.body.v_id, description:req.body.description}};
             
         categoryModel.update(query, newvalues, function(err, res) {
             if (err) throw err;

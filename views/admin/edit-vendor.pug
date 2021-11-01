@@ -31,7 +31,10 @@ include inc/header.pug
                img(src="/views/uploads/"+vendor.img width="200" height="100" style="background:#333; padding:12px;")
               div(class="col-md-12" style="margin-top:20px;")
                label Description
-               textarea(class="form-control" name="description" placeholder="Name") #{vendor.description}
+               textarea(class="form-control" name="description" ) #{vendor.description}
+              div(class="col-md-12" style="margin-top:20px;")
+               label Category Description
+               textarea(class="form-control" name="cat_excerpt" ) #{vendor.cat_excerpt}
              
                <input type="hidden" name="id" value="#{id}">
                input(type="submit" name="submit" value="Update" class="btn btn-custom right" style="background:blue; color:#fff; margin-top:15px;")

@@ -21,10 +21,10 @@ each vendor in vendorData
     .row
       .col-md-12
         h2= vendor.name
-        p= vendor.description
+        p !{vendor.description}
         .col-md-12.text-center
           h2 Categories
-          p.lead Lorem ipsum dolor sit amet, ius minim gubergren ad.
+          p.lead !{vendor.cat_excerpt}
     .row 
       each category in categoryData
         .col-md-3
