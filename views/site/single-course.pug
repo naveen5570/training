@@ -23,11 +23,11 @@ each course in courseData
         h2= course.name
         p !{course.description}
         div(class="tabs")
-         a(href="#schedules") Schedules
-         a(href="#details") Course Details 
-         a(href="#target_audience") Target Audience
-         a(href="#related") Related
-        h3(style="padding-bottom:20px;" id="schedules") Schedules
+         a(href="#schedules") UpComing Classes
+         a(href="#details") Full Course 
+         a(href="#target_audience") Pre-Requisite
+         a(href="#related") More Details
+        h3(style="padding-bottom:20px;" id="schedules") UpComing Classes
         
         .row#schedules
          - var i = 0
@@ -40,21 +40,21 @@ each course in courseData
               br 
               | Time:  #{schedule.starttime} - #{schedule.endtime}
           -i++
-        h3(style="padding-bottom:20px;" id="details") Course Details
+        h3(style="padding-bottom:20px;" id="details") Full Course
         | !{course.course_detail}
-        h3(style="padding-bottom:20px;" id="target_audience") Target Audience
+        h3(style="padding-bottom:20px;" id="target_audience") Pre-Requisite
         | !{course.target_audience}
-        h3(style="padding-bottom:20px;" id="related") Related
+        h3(style="padding-bottom:20px;" id="related") More Details
         | !{course.related}
 
           
       aside.col-md-3
         .box_style_1(style="text-align:center; border:0px; box-shadow:inset 0 0 0 0px #e0e5e9;")
           h4(style="text-align:center; border:0")= 'Price: ₹'+ course.price
-          a(class="enroll_button" href="#schedules") Enroll Now
+          span(class="enroll_button" ) Enroll Now
 
         .box_style_1(style="text-align:center;")
-          h4 Request For More Information
+          h4 Contact For Details
           form(method="post" class="form-group request_form" action="/request-form")
            input(type="text" placeholder="Full Name*" name="full_name" required)
            input(type="email" placeholder="Email Address*" name="email" required)
