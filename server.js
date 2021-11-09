@@ -769,7 +769,7 @@ app.get('/',async (req,res)=>{
                 // YOUR CODE HERE TO GET COMPORT AND COMMAND
                 req.session.email; 
                 const vendors = await vendorModel.find();
-                const courses = await courseModel.find().limit(4).populate('category_id');
+                const courses = await courseModel.find().limit(50).populate('category_id');
                 const homecontent = await homeModel.find();
                 res.render('site/index.pug',{vendorData:vendors, courseData:courses, homecontent:homecontent});
                 
