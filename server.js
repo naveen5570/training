@@ -806,6 +806,22 @@ app.get('/vendors',async(req,res)=>{
                         res.render('site/vendors.pug', {vendorData:vendors});
                         });
 
+
+
+app.get('/categories',async(req,res)=>{
+    const categories = await categoryModel.find().populate('vendor_id');
+                        
+                        res.render('site/categories.pug', {categoryData:categories});
+                        });
+
+
+app.get('/courses',async(req,res)=>{
+    const courses = await courseModel.find().populate('category_id');
+                                                
+                        res.render('site/courses.pug', {courseData:courses});
+                        });
+                        
+
 //search  
 app.get('/search',(req,res)=>{  
     try {  
