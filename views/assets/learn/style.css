@@ -50,3 +50,6 @@ ul.sf-menu li:first-child a {padding-left:0;}
 
 .grid img {height:170px;}
 .col-md-3 {margin-bottom:10px;}
+.col-lg-3.col-md-6.col-sm-6 .col-item, .grid {min-height: 480px;}
+
+.vendor_grid {min-height:400px !important;}

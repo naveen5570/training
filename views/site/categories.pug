@@ -11,7 +11,7 @@ section#main_content_gray
     .row
       each category in categoryData
        .col-lg-3.col-md-6.col-sm-6
-        .col-item
+        .col-item.vendor_grid
           span.ribbon_course
           .photo
             <a href="/category/#{category._id}"><img src="/views/uploads/#{category.img}"/></a>
@@ -21,7 +21,7 @@ section#main_content_gray
           .info
             .row
               .course_info.col-md-12.col-sm-12
-                h4 #{category.name.substr(0,20)}
+                h4 #{category.name}
                 p !{category.description.substr(0,130)}
                 
                 
